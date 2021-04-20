@@ -20,24 +20,22 @@ export default function Shop() {
         <React.Fragment>
             <div>
                 <h1>Shop</h1>
+                <div className='card-div'>
+                    {products.map(p => (
 
-                {products.map(p => (
-                    <div className="card">
-                        <img className="card-img-top" src={p.image_url} alt="product_image"></img>
-                        <div className="card-body">
-                            <h4>{p.brand}</h4>
-                            <h5>{p.name}</h5>
-                            <p>{p.description}</p>
-                            <p>$ {p.price}</p>
+                        <div className="card">
+                            <img className="card-img-top" src={p.image_url} alt="product_image"></img>
+                            <div className="card-body">
+                                <h4>{p.brand}</h4>
+                                <h5>{p.name}</h5>
+                                <p>{p.description}</p>
+                                <p>$ {p.price}</p>
+                            </div>
                         </div>
-                    </div>
 
-                ))}
-
-
+                    ))}
+                </div>
             </div>
-
-
         </React.Fragment>
     )
 }
