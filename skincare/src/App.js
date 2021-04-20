@@ -9,10 +9,12 @@ import {
     Link
 } from 'react-router-dom'
 
-import Home from './pages/home'
+// import Home from './pages/home'
+import Login from './pages/login'
 import About from './pages/about'
 import Shop from './pages/shop'
 import Account from './pages/account'
+import Register from './pages/register'
 
 function App() {
     return (
@@ -24,8 +26,11 @@ function App() {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav">
-                        <li className="nav-item active">
+                        {/* <li className="nav-item active">
                             <Link to='/' className='nav-link'>Home</Link>
+                        </li> */}
+                        <li className="nav-item active">
+                            <Link to='/login' className='nav-link'>Login</Link>
                         </li>
                         <li className="nav-item">
                             <Link to='/about' className='nav-link'>About Us</Link>
@@ -36,13 +41,19 @@ function App() {
                         <li className="nav-item">
                             <Link to='/account' className='nav-link'>Account</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to='/register' className='nav-link'>Register</Link>
+                        </li>
                     </ul>
                 </div>
             </nav>
             <Switch>
                 <div className='container-fluid'>
-                <Route exact path='/'>
+                {/* <Route exact path='/'>
                     <Home/>
+                </Route> */}
+                <Route exact path='/login'>
+                    <Login/>
                 </Route>
                 <Route exact path='/about'>
                     <About/>
@@ -52,6 +63,9 @@ function App() {
                 </Route>
                 <Route exact path='/account'>
                     <Account/>
+                </Route>
+                <Route exact path='/register'>
+                    <Register/>
                 </Route>
                 </div>
             </Switch>
