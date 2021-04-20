@@ -1,18 +1,27 @@
 import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
+// import { useLocation } from 'react-router-dom'
 import axios from 'axios'
 
 export default function Shop() {
-    const location = useLocation()
+    // const location = useLocation()
     // const username=location.state.form.username
     // const password=location.state.form.password
     const [products, setProduct] = useState([])
+    const [isLoggedIn, setIsLoggedIn] = useState({})
 
     useEffect(() => {
         const fetch = async () => {
-            const response = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/products')
-            setProduct(response.data)
-            console.log(response.data)
+            const productsList = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/products')
+            setProduct(productsList.data)
+            // console.log(response.data)
+
+            const token = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/shoppers/profile', {
+                'headers': {
+                    'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+                }
+            })
+            console.log(token.data)
+            setIsLoggedIn(token.data)
         }
         fetch()
     }, [])
@@ -61,6 +70,7 @@ export default function Shop() {
                                 <p>{p.category}</p>
                                 <p>{p.skintype}</p>
                                 <p>{renderTags(p.tags)}</p>
+                                {/* <a href=''/> */}
                             </div>
                         </div>
 

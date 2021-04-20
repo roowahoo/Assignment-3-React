@@ -14,9 +14,10 @@ export default function Account() {
             })
             console.log(response.data)
             setAccountDetails(response.data)
+            
         }
         fetch()
-    })
+    },[])
 
 
     return (

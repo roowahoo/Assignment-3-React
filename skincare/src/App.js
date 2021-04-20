@@ -15,6 +15,7 @@ import About from './pages/about'
 import Shop from './pages/shop'
 import Account from './pages/account'
 import Register from './pages/register'
+import Bag from './pages/bag'
 
 function App() {
     return (
@@ -44,6 +45,9 @@ function App() {
                         <li className="nav-item">
                             <Link to='/register' className='nav-link'>Register</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link to='/bag' className='nav-link'>Bag</Link>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -66,6 +70,9 @@ function App() {
                 </Route>
                 <Route exact path='/register'>
                     <Register/>
+                </Route>
+                <Route exact path='/bag'>
+                    <Bag/>
                 </Route>
                 </div>
             </Switch>
