@@ -27,7 +27,7 @@ export default function Shop() {
     }, [])
 
     const renderPrice = (item) => {
-        if (item.discounted_price != 'null') {
+        if (item.discounted_price !== 'null') {
             return item.discounted_price
         } else {
             return item.price
@@ -35,7 +35,7 @@ export default function Shop() {
     }
 
     const renderStrikethrough = (item) => {
-        if (item.discounted_price != 'null') {
+        if (item.discounted_price !== 'null') {
             return <div><s>${item.price}</s><span class="badge badge-pill badge-danger m-2">Offer</span></div>
         } else {
             return null
@@ -50,6 +50,12 @@ export default function Shop() {
 
         )
 
+    }
+
+    const addToBag=async (e)=>{
+        console.log(e.target.value)
+        const response=await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/bag/'+isLoggedIn.id+'/'+ e.target.value+'/add')
+        console.log(response.data)
     }
 
     return (
@@ -70,7 +76,7 @@ export default function Shop() {
                                 <p>{p.category}</p>
                                 <p>{p.skintype}</p>
                                 <p>{renderTags(p.tags)}</p>
-                                {/* <a href=''/> */}
+                                <button class='btn btn-sm btn-primary' onClick={addToBag} name='add' value={p.id}>Add to Bag</button>
                             </div>
                         </div>
 

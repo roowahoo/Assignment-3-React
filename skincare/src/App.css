@@ -7,3 +7,15 @@
     margin:0 20px
 
 }
+
+.item-row{
+    border: 1px solid gray;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.img-thumbnail{
+    width:200px;
+    height: 200px;
+}

@@ -16,9 +16,9 @@ export default function Login(){
     const history=useHistory()
 
     const login =async ()=>{
-        // history.push('/account',{
-        //     'form':formData
-        // })
+        history.push('/shop',{
+            'form':formData
+        })
         const response=await axios.post(baseUrl+'/api/shoppers/login',{
             'email':formData.email,
             'password':formData.password
