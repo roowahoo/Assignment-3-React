@@ -55,6 +55,11 @@ export default function Bag() {
         console.log(response.data)
     }
 
+    const removeItem=async(e)=>{
+        const response = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/bag/'+isLoggedIn.id+'/'+e.target.name+'/remove')
+        console.log(response.data)
+    }
+
     return (
         <React.Fragment>
             <div>
@@ -62,13 +67,14 @@ export default function Bag() {
                 <div>
 
                     {bagItems.map((item,i) => (
-                        <div class='item-row' key={item.id}>
-                            <img src={item.products.image_url} class='img-thumbnail'></img>
+                        <div className='item-row' key={item.id}>
+                            <img src={item.products.image_url} className='img-thumbnail'></img>
                             <div><b>{item.products.name}</b></div>
                             <div>{item.quantity}</div>
 
-                                <input type='text' class='quantity' name={item.product_id} value={item.quantity} onChange={updateFormFields} ></input>
+                                <input type='text' className='quantity' name={item.product_id} value={item.quantity} onChange={updateFormFields} ></input>
                                 <button name={item.product_id} value={item.quantity} onClick={updateQuantity}>Update</button>
+                                <button name={item.product_id} onClick={removeItem}>Remove</button>
                            
                         </div>
 
