@@ -89,7 +89,7 @@ export default function Bag() {
                             <img src={item.products.image_url} className='img-thumbnail' alt='product-thumbnail'></img>
                             <div><b>{item.products.name}</b></div>
                             <div>
-                                <input type='text' className='quantity' name={item.product_id} value={item.quantity} onChange={updateFormFields} size='2'></input>
+                                <input type='text' name={item.product_id} value={item.quantity} onChange={updateFormFields} size='2'></input>
                                 <button name={item.product_id} value={item.quantity} onClick={updateQuantity} className='btn btn-primary m-1'>Update</button>
                             </div>
                             <button name={item.product_id} onClick={removeItem} className='btn btn-primary m-2'>Remove</button>
