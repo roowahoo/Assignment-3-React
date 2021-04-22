@@ -8,12 +8,13 @@ export default function Shop() {
     // const password=location.state.form.password
     const [products, setProduct] = useState([])
     const [isLoggedIn, setIsLoggedIn] = useState({})
+    const [searchSkintype,setSearchSkintype]=useState('')
 
     useEffect(() => {
         const fetch = async () => {
             const productsList = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/products')
             setProduct(productsList.data)
-            // console.log(response.data)
+            console.log(productsList.data)
 
             const token = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/shoppers/profile', {
                 'headers': {
@@ -63,23 +64,43 @@ export default function Shop() {
 
     }
 
+    const search=async(e)=>{
+        if(searchSkintype){
+            const response=await axios.post('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/products/skintype',{
+                'skintype_id':parseInt(searchSkintype)
+            })
+            setProduct(response.data)
+            console.log(response.data)
+        }
+       
+    }
+
     return (
         <React.Fragment>
             <div>
                 <h1>Shop</h1>
+                <label className='form-label'>Skintype:</label>
+                <select onChange={(e)=>setSearchSkintype(e.target.value)} className='form-control'>
+                    <option value=''>--Select--</option>
+                    <option value='1'>Oily</option>
+                    <option value='2'>Dry</option>
+                    <option value='3'>Combination</option>
+                    <option value='4'>Sensitive</option>
+                </select>
+                <button onClick={search}>Search</button>
                 <div className='card-div'>
                     {products.map(p => (
 
                         <div className="card">
                             <img className="card-img-top" src={p.image_url} alt="product_image"></img>
                             <div className="card-body">
-                                <h4>{p.brand}</h4>
+                                <h4>{p.brand.brand}</h4>
                                 <h5>{p.name}</h5>
                                 <p>{p.description}</p>
                                 {renderStrikethrough(p)}
                                 <p>${renderPrice(p)}</p>
-                                <p>{p.category}</p>
-                                <p>{p.skintype}</p>
+                                <p>{p.category.name}</p>
+                                <p>{p.skintype.skintype}</p>
                                 <p>{renderTags(p.tags)}</p>
                                 <button class='btn btn-sm btn-primary' onClick={addToBag} name='add' value={p.id}>Add to Bag</button>
                             </div>
