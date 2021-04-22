@@ -16,6 +16,7 @@ import Shop from './pages/shop'
 import Account from './pages/account'
 import Register from './pages/register'
 import Bag from './pages/bag'
+import Review from './pages/review'
 
 function App() {
     return (
@@ -73,6 +74,9 @@ function App() {
                 </Route>
                 <Route exact path='/bag'>
                     <Bag/>
+                </Route>
+                <Route exact path='/review'>
+                    <Review/>
                 </Route>
                 </div>
             </Switch>

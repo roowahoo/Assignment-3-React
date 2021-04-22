@@ -7,6 +7,8 @@ export default function Bag() {
 
     const [bagItems, setBagItems] = useState([])
     const [isLoggedIn, setIsLoggedIn] = useState({})
+    const [address, setAddress] = useState('')
+    const [contact, setContact] = useState('')
 
 
     const history = useHistory()
@@ -39,8 +41,8 @@ export default function Bag() {
 
     const updateFormFields = (e) => {
         let clone = [...bagItems]
-        let index =bagItems.findIndex(i=>i.product_id===parseInt(e.target.name))
-        clone[index].quantity=e.target.value
+        let index = bagItems.findIndex(i => i.product_id === parseInt(e.target.name))
+        clone[index].quantity = e.target.value
         setBagItems(clone)
 
     }
@@ -49,15 +51,29 @@ export default function Bag() {
         console.log(isLoggedIn.id)
         console.log(e.target.name)
         console.log(e.target.value)
-        const response = await axios.post('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/bag/' + isLoggedIn.id + '/' + e.target.name +'/updateQuantity', {
+        const response = await axios.post('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/bag/' + isLoggedIn.id + '/' + e.target.name + '/updateQuantity', {
             'newQuantity': e.target.value
         })
         console.log(response.data)
     }
 
-    const removeItem=async(e)=>{
-        const response = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/bag/'+isLoggedIn.id+'/'+e.target.name+'/remove')
+    const removeItem = async (e) => {
+        const response = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/bag/' + isLoggedIn.id + '/' + e.target.name + '/remove')
         console.log(response.data)
+    }
+
+    const order = async () => {
+        
+        const order = await axios.post('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/order/' + isLoggedIn.id, {
+            'shopper_id': isLoggedIn.id,
+            'shipping_address': address,
+            'contact_number': contact
+        })
+        console.log(order.data)
+
+        const order_items=await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/order/' + isLoggedIn.id)
+        console.log(order_items.data)
+        history.push('/review')
     }
 
     return (
@@ -66,21 +82,31 @@ export default function Bag() {
                 <h1>Bag</h1>
                 <div>
 
-                    {bagItems.map((item,i) => (
+                    {bagItems.map((item, i) => (
                         <div className='item-row' key={item.id}>
-                            <img src={item.products.image_url} className='img-thumbnail'></img>
+                            <img src={item.products.image_url} className='img-thumbnail' alt='product-thumbnail'></img>
                             <div><b>{item.products.name}</b></div>
-                            <div>{item.quantity}</div>
+                            <div>
+                                <input type='text' className='quantity' name={item.product_id} value={item.quantity} onChange={updateFormFields} size='2'></input>
+                                <button name={item.product_id} value={item.quantity} onClick={updateQuantity} className='btn btn-primary m-1'>Update</button>
+                            </div>
+                            <button name={item.product_id} onClick={removeItem} className='btn btn-primary m-2'>Remove</button>
 
-                                <input type='text' className='quantity' name={item.product_id} value={item.quantity} onChange={updateFormFields} ></input>
-                                <button name={item.product_id} value={item.quantity} onClick={updateQuantity}>Update</button>
-                                <button name={item.product_id} onClick={removeItem}>Remove</button>
-                           
                         </div>
 
                     ))}
 
+                    <div>
+                        <label className='form-label'>Shipping Address:</label>
+                        <input type='text' value={isLoggedIn.address} onChange={(e) => setAddress(e.target.value)} className='form-control'></input>
+                    </div>
+                    <div>
+                        <label className='form-label'>Contact Number:</label>
+                        <input type='text' onChange={(e) => setContact(e.target.value)} className='form-control'></input>
+                    </div>
+
                 </div>
+                <button onClick={order} className='btn btn-primary'>Checkout</button>
             </div>
 
         </React.Fragment>

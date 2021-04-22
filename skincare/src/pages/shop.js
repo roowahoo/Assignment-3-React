@@ -52,10 +52,15 @@ export default function Shop() {
 
     }
 
-    const addToBag=async (e)=>{
+    const addToBag = async (e) => {
         console.log(e.target.value)
-        const response=await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/bag/'+isLoggedIn.id+'/'+ e.target.value+'/add')
-        console.log(response.data)
+        if (isLoggedIn.id) {
+            const response = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/bag/' + isLoggedIn.id + '/' + e.target.value + '/add')
+            console.log(response.data)
+        }else{
+            alert('login')
+        }
+
     }
 
     return (
