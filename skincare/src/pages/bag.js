@@ -71,9 +71,11 @@ export default function Bag() {
         })
         console.log(order.data)
 
-        const order_items=await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/order/' + isLoggedIn.id)
-        console.log(order_items.data)
-        history.push('/review')
+        const updateOrder=await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/order/' + isLoggedIn.id)
+        console.log(updateOrder.data)
+        history.push('/review',{
+            'order':updateOrder.data
+        })
     }
 
     return (
