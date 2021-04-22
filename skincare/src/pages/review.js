@@ -36,6 +36,8 @@ export default function Review() {
         }
         fetch()
     }, [])
+
+    
     return (
         <React.Fragment>
             <h1>Review and Payment</h1>
@@ -45,7 +47,6 @@ export default function Review() {
                         <img src={item.products.image_url} className='img-thumbnail' alt='product-thumbnail'></img>
                         <div><b>{item.products.name}</b></div>
                         <div>{item.quantity}</div>
-
                     </div>
 
                 ))}
@@ -55,6 +56,7 @@ export default function Review() {
                     <p>Shipping Address: {address}</p>
                     <p>Contact: {contact}</p>
                 </div>
+                <a href={'https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/checkout/'+isLoggedIn.id}>Pay</a>
             </div>
 
         </React.Fragment>

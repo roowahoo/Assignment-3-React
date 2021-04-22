@@ -27,7 +27,7 @@ export default function Shop() {
     }, [])
 
     const renderPrice = (item) => {
-        if (item.discounted_price !== 'null') {
+        if (item.discounted_price !== null) {
             return item.discounted_price
         } else {
             return item.price
