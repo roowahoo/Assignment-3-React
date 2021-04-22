@@ -35,7 +35,7 @@ export default function Shop() {
     }
 
     const renderStrikethrough = (item) => {
-        if (item.discounted_price !== 'null') {
+        if (item.discounted_price !== null) {
             return <div><s>${item.price}</s><span class="badge badge-pill badge-danger m-2">Offer</span></div>
         } else {
             return null
