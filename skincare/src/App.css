@@ -17,8 +17,21 @@ body{
 }
 
 #navbar{
-    background-color:#f4d195 !important;
+    background-color:#d4c7b0 !important;
+    font-size:20px
 }
+
+#logo{
+    height:90px
+}
+
+/* #accountIcon{
+    padding-left:99%;
+}
+
+#bagIcon{
+    
+} */
 
 .penCursor{
     color:gray;

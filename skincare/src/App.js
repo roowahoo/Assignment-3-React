@@ -25,6 +25,7 @@ import Account from './pages/account'
 import Register from './pages/register'
 import Bag from './pages/bag'
 import Review from './pages/review'
+import Logo from './logo.png'
 
 function App() {
 
@@ -37,7 +38,7 @@ function App() {
         <Router>
             <div>
                 <Navbar color="light" light expand="md" id='navbar'>
-                    <NavbarBrand href="/">The Skin Shop</NavbarBrand>
+                    <NavbarBrand href="/"><img src={Logo} id='logo'/></NavbarBrand>
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="mr-auto" navbar>
@@ -50,11 +51,11 @@ function App() {
                             <NavItem>
                                 <Link to='/register' className='nav-link'>Register</Link>
                             </NavItem>
-                            <NavItem>
-                                <Link to='/bag' className='nav-link'>Bag</Link>
+                            <NavItem id='accountIcon m-auto'> 
+                                <Link to='/account' className='nav-link'>&#128100;</Link>
                             </NavItem>
-                            <NavItem>
-                                <Link to='/account' className='nav-link'>Account</Link>
+                            <NavItem id='bagIcon ml-auto'>
+                                <Link to='/bag' className='nav-link'>&#128092;</Link>
                             </NavItem>
                         </Nav>
                     </Collapse>

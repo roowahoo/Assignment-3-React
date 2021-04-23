@@ -122,7 +122,7 @@ export default function Shop() {
                     <option value='4'>SKIN&LAB</option>
                     <option value='5'>Rovectin</option>
                 </select>
-                <div className='d-flex justify-content-center'>
+                <div className='d-flex justify-content-end'>
                     <button onClick={search} className='btn goldBtn my-3'>Search</button>
                 </div>
                 <div className='card-div'>
