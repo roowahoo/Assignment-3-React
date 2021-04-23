@@ -1,6 +1,6 @@
 import config from './config'
 import './App.css';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import {
     BrowserRouter as Router,
@@ -35,21 +35,25 @@ function App() {
 
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
-    const history = useHistory()
+    // const history = useHistory()
 
-    const logout=async ()=>{
+    const logout = async () => {
+        const response=await axios.post(config.baseUrl+'/api/shoppers/logout',{
+            'refreshToken':localStorage.getItem('refreshToken')
+        })
+        console.log(response.data)
         localStorage.setItem('accessToken', null);
         localStorage.setItem('refreshToken', null);
-        history.push('/shop')
+        // history.push('/shop')
     }
 
-    useEffect(()=>{
-        setInterval(async()=>{
-            const response=await axios.post(config.baseUrl+'api/shoppers/refresh',{
-                refreshToken:localStorage.getItem('refreshToken')
+    useEffect(() => {
+        setInterval(async () => {
+            const response = await axios.post(config.baseUrl + 'api/shoppers/refresh', {
+                refreshToken: localStorage.getItem('refreshToken')
             })
-            localStorage.setItem('accessToken',response.data.accessToken)
-        },config.refresh_token_interval)
+            localStorage.setItem('accessToken', response.data.accessToken)
+        }, config.refresh_token_interval)
     })
 
     return (
@@ -57,31 +61,31 @@ function App() {
         <Router>
             <div>
                 <Switch>
-                <Navbar color="light" light expand="md" id='navbar'>
-                    <NavbarBrand href="/"><img src={Logo} id='logo'/></NavbarBrand>
-                    <NavbarToggler onClick={toggle} />
-                    <Collapse isOpen={isOpen} navbar>
-                        <Nav className="mr-auto" navbar>
-                            <NavItem>
-                                <Link to='/login' className='nav-link'>Login</Link>
-                            </NavItem>
-                            <NavItem>
-                                <Link to='/shop' className='nav-link'>Shop</Link>
-                            </NavItem>
-                            <NavItem>
-                                <Link to='/register' className='nav-link'>Register</Link>
-                            </NavItem>
-                            <NavItem id='accountIcon'> 
-                                <Link to='/account' className='nav-link'>&#128100;</Link>
-                            </NavItem>
-                            <NavItem id='bagIcon'>
-                                <Link to='/bag' className='nav-link'><img src={ShoppingBag} id='bag'/></Link>
-                            </NavItem>
-                            <button onClick={logout}>Logout</button>
-                        </Nav>
-                    </Collapse>
-                </Navbar>
-            </Switch>
+                    <Navbar color="light" light expand="md" id='navbar'>
+                        <NavbarBrand href="/"><img src={Logo} id='logo' /></NavbarBrand>
+                        <NavbarToggler onClick={toggle} />
+                        <Collapse isOpen={isOpen} navbar>
+                            <Nav className="mr-auto" navbar>
+                                <NavItem>
+                                    <Link to='/login' className='nav-link'>Login</Link>
+                                </NavItem>
+                                <NavItem>
+                                    <Link to='/shop' className='nav-link'>Shop</Link>
+                                </NavItem>
+                                <NavItem>
+                                    <Link to='/register' className='nav-link'>Register</Link>
+                                </NavItem>
+                                <NavItem id='accountIcon'>
+                                    <Link to='/account' className='nav-link'>&#128100;</Link>
+                                </NavItem>
+                                <NavItem id='bagIcon'>
+                                    <Link to='/bag' className='nav-link'><img src={ShoppingBag} id='bag' /></Link>
+                                </NavItem>
+                                <button onClick={logout}>Logout</button>
+                            </Nav>
+                        </Collapse>
+                    </Navbar>
+                </Switch>
             </div>
             <Switch>
                 <div className='container-fluid p-3'>

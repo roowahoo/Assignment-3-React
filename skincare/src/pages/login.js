@@ -27,6 +27,7 @@ export default function Login() {
         localStorage.setItem('accessToken', response.data.accessToken);
         localStorage.setItem('refreshToken', response.data.refreshToken);
         console.log(response.data)
+        
 
     }
 
