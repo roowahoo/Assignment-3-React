@@ -94,7 +94,6 @@ export default function Shop() {
     return (
         <React.Fragment>
             <div>
-                <h1>Shop</h1>
                 <label className='form-label'>Skintype:</label>
                 <select onChange={(e) => setSearchSkintype(e.target.value)} className='form-control'>
                     <option value=''></option>
@@ -123,7 +122,7 @@ export default function Shop() {
                     <option value='4'>SKIN&LAB</option>
                     <option value='5'>Rovectin</option>
                 </select>
-                <button onClick={search}>Search</button>
+                <button onClick={search} className='btn btn-primary m-2'>Search</button>
                 <div className='card-div'>
                     {products.map(p => (
 
