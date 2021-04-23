@@ -21,21 +21,25 @@ body{
     font-size:20px
 }
 
+#navItemsContainer{
+    width:100%
+}
+
 #logo{
     height:90px
 }
 
 #bag{
-    height:50px
+    height:50px;
+    right:0
 }
 
-/* #accountIcon{
-    padding-left:99%;
-}
+#accountIcon{
+    margin-left:auto;
+    font-size: 25px;
+    margin-top:5px
 
-#bagIcon{
-    
-} */
+}
 
 .penCursor{
     color:gray;

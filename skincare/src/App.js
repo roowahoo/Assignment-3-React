@@ -38,8 +38,8 @@ function App() {
     // const history = useHistory()
 
     const logout = async () => {
-        const response=await axios.post(config.baseUrl+'/api/shoppers/logout',{
-            'refreshToken':localStorage.getItem('refreshToken')
+        const response = await axios.post(config.baseUrl + '/api/shoppers/logout', {
+            'refreshToken': localStorage.getItem('refreshToken')
         })
         console.log(response.data)
         localStorage.setItem('accessToken', null);
@@ -64,8 +64,8 @@ function App() {
                     <Navbar color="light" light expand="md" id='navbar'>
                         <NavbarBrand href="/"><img src={Logo} id='logo' /></NavbarBrand>
                         <NavbarToggler onClick={toggle} />
-                        <Collapse isOpen={isOpen} navbar>
-                            <Nav className="mr-auto" navbar>
+                        <Collapse isOpen={isOpen} navbar >
+                            <Nav className='d-flex' id='navItemsContainer' navbar>
                                 <NavItem>
                                     <Link to='/login' className='nav-link'>Login</Link>
                                 </NavItem>
@@ -81,7 +81,9 @@ function App() {
                                 <NavItem id='bagIcon'>
                                     <Link to='/bag' className='nav-link'><img src={ShoppingBag} id='bag' /></Link>
                                 </NavItem>
-                                <button onClick={logout}>Logout</button>
+                                <div>
+                                    <button onClick={logout} className='btn goldBtn mt-2'>Logout</button>
+                                </div>
                             </Nav>
                         </Collapse>
                     </Navbar>
