@@ -36,7 +36,7 @@ function App() {
 
         <Router>
             <div>
-                <Navbar color="light" light expand="md">
+                <Navbar color="light" light expand="md" id='navbar'>
                     <NavbarBrand href="/">The Skin Shop</NavbarBrand>
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
@@ -61,7 +61,7 @@ function App() {
                 </Navbar>
             </div>
             <Switch>
-                <div className='container-fluid'>
+                <div className='container-fluid p-3'>
                     {/* <Route exact path='/'>
                     <Home/>
                 </Route> */}

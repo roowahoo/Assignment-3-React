@@ -9,8 +9,8 @@ export default function Shop() {
     const [products, setProduct] = useState([])
     const [isLoggedIn, setIsLoggedIn] = useState({})
     const [searchSkintype, setSearchSkintype] = useState(0)
-    const [searchCategory,setSearchCategory]=useState(0)
-    const [searchBrand,setSearchBrand]=useState(0)
+    const [searchCategory, setSearchCategory] = useState(0)
+    const [searchBrand, setSearchBrand] = useState(0)
 
     useEffect(() => {
         const fetch = async () => {
@@ -31,9 +31,9 @@ export default function Shop() {
 
     const renderPrice = (item) => {
         if (item.discounted_price !== null) {
-            return item.discounted_price
+            return item.discounted_price/100
         } else {
-            return item.price
+            return item.price/100
         }
     }
 
@@ -74,16 +74,16 @@ export default function Shop() {
             setProduct(response.data)
             console.log(response.data)
         }
-        if(searchCategory){
-            const response=await axios.post('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/products/category',{
-                'category_id':searchCategory
+        if (searchCategory) {
+            const response = await axios.post('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/products/category', {
+                'category_id': searchCategory
             })
             setProduct(response.data)
             console.log(response.data)
         }
-        if(searchBrand){
-            const response=await axios.post('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/products/brand',{
-                'brand_id':searchBrand
+        if (searchBrand) {
+            const response = await axios.post('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/products/brand', {
+                'brand_id': searchBrand
             })
             setProduct(response.data)
             console.log(response.data)
@@ -103,7 +103,7 @@ export default function Shop() {
                     <option value='4'>Sensitive</option>
                 </select>
                 <label className='form-label'>Category:</label>
-                <select onChange={(e)=>setSearchCategory(e.target.value)} className='form-control'>
+                <select onChange={(e) => setSearchCategory(e.target.value)} className='form-control'>
                     <option value=''></option>
                     <option value='1'>Make-up Remover</option>
                     <option value='3'>Face Wash</option>
@@ -115,29 +115,31 @@ export default function Shop() {
                     <option value='9'>Sunblock</option>
                 </select>
                 <label className='form-label'>Brand:</label>
-                <select onChange={(e)=>setSearchBrand(e.target.value)} className='form-control'>
+                <select onChange={(e) => setSearchBrand(e.target.value)} className='form-control'>
                     <option value=''></option>
                     <option value='1'>Klairs</option>
                     <option value='3'>Cosrx</option>
                     <option value='4'>SKIN&LAB</option>
                     <option value='5'>Rovectin</option>
                 </select>
-                <button onClick={search} className='btn btn-primary m-2'>Search</button>
+                <div className='d-flex justify-content-center'>
+                    <button onClick={search} className='btn goldBtn my-3'>Search</button>
+                </div>
                 <div className='card-div'>
                     {products.map(p => (
 
                         <div className="card">
                             <img className="card-img-top" src={p.image_url} alt="product_image"></img>
                             <div className="card-body">
-                                <h4>{p.brand.brand}</h4>
-                                <h5>{p.name}</h5>
+                                <h4><b>{p.brand.brand}</b></h4>
+                                <h5><b>{p.name}</b></h5>
                                 <p>{p.description}</p>
                                 {renderStrikethrough(p)}
                                 <p>${renderPrice(p)}</p>
-                                <p>{p.category.name}</p>
-                                <p>{p.skintype.skintype}</p>
                                 <p>{renderTags(p.tags)}</p>
-                                <button class='btn btn-sm btn-primary' onClick={addToBag} name='add' value={p.id}>Add to Bag</button>
+                                <div className='d-flex justify-content-end'>
+                                    <button class='btn btn-sm goldBtn' onClick={addToBag} name='add' value={p.id}>Add to Bag</button>
+                                </div>
                             </div>
                         </div>
 

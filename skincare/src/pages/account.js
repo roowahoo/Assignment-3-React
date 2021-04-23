@@ -77,7 +77,9 @@ export default function Account() {
                     <label className='form-label'>Password:</label>
                     <input onChange={(e)=>setPassword(e.target.value)} value={password} type='text' className='form-control'></input>
                 </div>
-                <button onClick={update}>Update</button>
+                <div className='d-flex justify-content-end'>
+                <button onClick={update} className='btn goldBtn my-3'>Update</button>
+                </div>
             </div>
 
         </React.Fragment >

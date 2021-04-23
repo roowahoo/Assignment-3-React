@@ -10,22 +10,22 @@ export default function Register() {
         'address': ''
     })
 
-    const updateFormFields=(e)=>{
-        let clone={...formData}
-        clone[e.target.name]=e.target.value
+    const updateFormFields = (e) => {
+        let clone = { ...formData }
+        clone[e.target.name] = e.target.value
         setFormData(clone)
 
     }
 
-    const register = async()=>{
-        const response=await axios.post('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/shoppers/register',{
-            'username':formData.username,
-            'email':formData.email,
-            'password':formData.password,
-            'address':formData.address
+    const register = async () => {
+        const response = await axios.post('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/shoppers/register', {
+            'username': formData.username,
+            'email': formData.email,
+            'password': formData.password,
+            'address': formData.address
         })
         console.log(response.data)
-        
+
     }
 
 
@@ -33,7 +33,7 @@ export default function Register() {
         <React.Fragment>
             <div>
                 <label className='form-label'>Username:</label>
-                <input type='text' name='username' value={formData.username} onChange={updateFormFields} className='form-control'/>
+                <input type='text' name='username' value={formData.username} onChange={updateFormFields} className='form-control' />
             </div>
             <div>
                 <label className='form-label'>Email:</label>
@@ -47,7 +47,9 @@ export default function Register() {
                 <label className='form-label'>Address:</label>
                 <input type='text' name='address' value={formData.address} onChange={updateFormFields} className='form-control' />
             </div>
-            <button onClick={register} className='btn btn-primary mt-3'>Register</button>
+            <div className='d-flex justify-content-end'>
+                <button onClick={register} className='btn goldBtn mt-3'>Register</button>
+            </div>
 
 
         </React.Fragment>

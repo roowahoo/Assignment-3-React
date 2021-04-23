@@ -1,3 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap');
+
+body{
+    background-image:url("plant.jpg");
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: 'Playfair Display', serif !important
+    
+}
+
+.goldBtn{
+    background-color: #d4af37 !important ;
+    color:white !important;
+    box-shadow:0 8px 16px 0 rgba(237, 194, 113, 0.7), 0 8px 8px 0 rgba(0,0,0,0.19);
+    padding:5px 30px
+}
+
+#navbar{
+    background-color:#f4d195 !important;
+}
+
+.penCursor{
+    color:gray;
+    background-color: transparent;
+    border:none;
+    font-size: 20px;
+}
+.crossCursor{
+    color:red;
+    background-color: transparent;
+    border:none;
+    font-size: 20px;
+    margin-left:50px
+}
+
 .card-div{
     display:flex
 }
@@ -9,13 +45,19 @@
 }
 
 .item-row{
-    border: 1px solid gray;
+    border: 1px solid rgb(209, 206, 206);
     display:flex;
-    justify-content: space-between;
     align-items: center;
+    background-color:rgba(255, 255, 255, 0.9); ;
 }
 
 .img-thumbnail{
     width:200px;
     height: 200px;
+}
+
+.bagItemName{
+    padding-left:20px;
+    word-wrap: break-word;
+    width:60%
 }

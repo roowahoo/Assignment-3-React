@@ -63,7 +63,7 @@ export default function Bag() {
     }
 
     const order = async () => {
-        
+
         const order = await axios.post('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/order/' + isLoggedIn.id, {
             'shopper_id': isLoggedIn.id,
             'shipping_address': address,
@@ -71,34 +71,33 @@ export default function Bag() {
         })
         console.log(order.data)
 
-        const updateOrder=await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/order/' + isLoggedIn.id)
+        const updateOrder = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/order/' + isLoggedIn.id)
         console.log(updateOrder.data)
-        history.push('/review',{
-            'order':updateOrder.data
+        history.push('/review', {
+            'order': updateOrder.data
         })
     }
 
     return (
         <React.Fragment>
             <div>
-                <h1>Bag</h1>
                 <div>
 
                     {bagItems.map((item, i) => (
                         <div className='item-row' key={item.id}>
                             <img src={item.products.image_url} className='img-thumbnail' alt='product-thumbnail'></img>
-                            <div><b>{item.products.name}</b></div>
+                            <div className='bagItemName'><b>{item.products.name}</b></div>
                             <div>
                                 <input type='text' name={item.product_id} value={item.quantity} onChange={updateFormFields} size='2'></input>
-                                <button name={item.product_id} value={item.quantity} onClick={updateQuantity} className='btn btn-primary m-1'>Update</button>
+                                <button name={item.product_id} value={item.quantity} onClick={updateQuantity} className='m-2 penCursor'>&#9998;</button>
                             </div>
-                            <button name={item.product_id} onClick={removeItem} className='btn btn-primary m-2'>Remove</button>
+                            <button name={item.product_id} onClick={removeItem} className='my-5 crossCursor'>&#9747;</button>
 
                         </div>
 
                     ))}
 
-                    <div>
+                    <div className='my-3'>
                         <label className='form-label'>Shipping Address:</label>
                         <input type='text' value={isLoggedIn.address} onChange={(e) => setAddress(e.target.value)} className='form-control'></input>
                     </div>
@@ -108,7 +107,9 @@ export default function Bag() {
                     </div>
 
                 </div>
-                <button onClick={order} className='btn btn-primary'>Checkout</button>
+                <div className='d-flex justify-content-center'>
+                    <button onClick={order} className='btn goldBtn my-3'>Checkout</button>
+                </div>
             </div>
 
         </React.Fragment>
