@@ -31,6 +31,8 @@ export default function Register() {
 
     return (
         <React.Fragment>
+            <h1 className='text'>Register</h1>
+            <p className='text'>Create an account with us!</p>
             <div className='form'>
                 <div>
                     <label className='form-label'>Username:</label>

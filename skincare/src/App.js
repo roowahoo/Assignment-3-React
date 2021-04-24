@@ -50,7 +50,7 @@ function App() {
         <Router>
             <div>
                 <Switch>
-                    <Navbar color="light" light expand="md" id='navbar'>
+                    <Navbar color="light" fixed='top'  light expand="md" id='navbar'>
                         <NavbarBrand href="/"><img src={Logo} id='logo' alt='logo' /></NavbarBrand>
                         <NavbarToggler onClick={toggle} />
                         <Collapse isOpen={isOpen} navbar >

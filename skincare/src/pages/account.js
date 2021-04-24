@@ -69,7 +69,8 @@ export default function Account() {
 
     return (
         <React.Fragment>
-            <h1>My Account</h1>
+            <h1 className='text'>Profile</h1>
+            <p className='text'>Update your details below!</p>
             <div>
                 <div>
                     <label className='form-label'>Username:</label>

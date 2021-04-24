@@ -9,6 +9,10 @@ body{
     
 }
 
+.container-fluid{
+    margin-top:150px
+}
+
 .goldBtn{
     background-color: #d4af37 !important ;
     color:white !important;
@@ -36,8 +40,7 @@ body{
 
 #accountIcon{
     margin-left:auto;
-    font-size: 25px;
-    margin-top:5px
+    font-size: 30px;
 
 }
 
@@ -110,7 +113,10 @@ body{
     box-shadow:10px 10px 8px #a09c9c
 }
 
+}
 
-
-
+.text{
+    color:#bc6c25;
+    text-align: center;
+    
 }

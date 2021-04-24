@@ -104,7 +104,7 @@ export default function Bag() {
                                 <button name={item.product_id} value={item.quantity} onClick={updateQuantity} className='m-1 checkCursor'>&#10004;</button>
                                 <h5 className='pt-1 ps-1'>${renderPrice(item)}</h5>
                             </div>
-                            <div class="w-100"></div>
+                            <div className="w-100"></div>
                             <div className='mx-auto'>
                                 <button name={item.product_id} onClick={removeItem} className='crossCursor'>&#10006;</button>
                             </div>
@@ -116,11 +116,11 @@ export default function Bag() {
 
                 <div className='my-3'>
                     <label className='form-label'>Shipping Address:</label>
-                    <input type='text' value={isLoggedIn.address} onChange={(e) => setAddress(e.target.value)} className='form-control'></input>
+                    <input type='text' maxLength='500' onChange={(e) => setAddress(e.target.value)} className='form-control' required></input>
                 </div>
                 <div>
                     <label className='form-label'>Contact Number:</label>
-                    <input type='text' onChange={(e) => setContact(e.target.value)} className='form-control'></input>
+                    <input type='tel' maxLength='12' value={contact} onChange={(e) => setContact(e.target.value)} className='form-control' required></input>
                 </div>
 
             </div>

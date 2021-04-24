@@ -55,6 +55,8 @@ export default function Login() {
 
     return (
         <React.Fragment>
+            <h1 className='text'>Login</h1>
+            <p className='text'>Login to start shopping!</p>
             <div className='form'>
                 <div>
                     <label className='form-label'>Email:</label>

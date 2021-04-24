@@ -39,7 +39,7 @@ export default function Shop() {
 
     const renderStrikethrough = (item) => {
         if (item.discounted_price !== null) {
-            return <div><s>${item.price}</s><span class="badge badge-pill badge-danger m-2">Offer</span></div>
+            return <div><s>${item.price}</s><span className="badge badge-pill badge-danger m-2">Offer</span></div>
         } else {
             return null
         }
@@ -48,7 +48,7 @@ export default function Shop() {
     const renderTags = (item) => {
         return (
             item.map(i => (
-                <p class='badge badge-pill badge-primary m-1'>{i.tag}</p>
+                <p className='badge badge-pill badge-primary m-1'>{i.tag}</p>
             ))
 
         )
@@ -147,7 +147,7 @@ export default function Shop() {
                                 <p>${renderPrice(p)}</p>
                                 <p>{renderTags(p.tags)}</p>
                                 <div className='d-flex justify-content-end'>
-                                    <button class='btn btn-sm goldBtn' onClick={addToBag} name='add' value={p.id}>Add to Bag</button>
+                                    <button className='btn btn-sm goldBtn' onClick={addToBag} name='add' value={p.id}>Add to Bag</button>
                                 </div>
                             </div>
                         </div>
