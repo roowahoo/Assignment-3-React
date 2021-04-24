@@ -78,28 +78,39 @@ export default function Bag() {
         })
     }
 
+    const renderPrice = (item) => {
+        if (item.products.discounted_price !== null) {
+            return item.products.discounted_price / 100 * item.quantity
+        } else {
+            return item.products.price / 100 * item.quantity
+        }
+    }
+
     return (
         <React.Fragment>
             <div>
 
-                {bagItems.map((item, i) => (
-                    <div className='item-row row' key={item.id}>
-                        <div className='col-4'>
-                            <img src={item.products.image_url} className='img-thumbnail' alt='product-thumbnail'></img>
-                        </div>
-                        
-                        <div className='bagItemName col-5'><b>{item.products.name}</b></div>
-                        
-                        <div className='col-3 d-flex justify-content-center'>
-                            <input type='text' name={item.product_id} value={item.quantity} onChange={updateFormFields} size='1'></input>
-                            <button name={item.product_id} value={item.quantity} onClick={updateQuantity} className='m-1 checkCursor'>&#10004;</button>
-                        </div>
-                        <div class="w-100"></div>
-                        <div className='mx-auto'>
-                            <button name={item.product_id} onClick={removeItem} className='crossCursor'>&#10006;</button>
-                        </div>
+                {bagItems.map((item) => (
+                    // <div className='container'>
+                        <div className='item-row row' key={item.id}>
+                            <div className='col-3'>
+                                <img src={item.products.image_url} className='img-thumbnail' alt='product-thumbnail'></img>
+                            </div>
 
-                    </div>
+                            <div className='bagItemName col-5'><b>{item.products.name}</b></div>
+
+                            <div className='col-4 d-flex justify-content-center'>
+                                <input type='text' name={item.product_id} value={item.quantity} onChange={updateFormFields} size='1'></input>
+                                <button name={item.product_id} value={item.quantity} onClick={updateQuantity} className='m-1 checkCursor'>&#10004;</button>
+                                <h5 className='pt-1 ps-1'>${renderPrice(item)}</h5>
+                            </div>
+                            <div class="w-100"></div>
+                            <div className='mx-auto'>
+                                <button name={item.product_id} onClick={removeItem} className='crossCursor'>&#10006;</button>
+                            </div>
+
+                        </div>
+                    // </div>
 
                 ))}
 

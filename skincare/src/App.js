@@ -6,8 +6,7 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link,
-    useHistory
+    Link
 } from 'react-router-dom'
 
 import {
@@ -52,7 +51,7 @@ function App() {
             <div>
                 <Switch>
                     <Navbar color="light" light expand="md" id='navbar'>
-                        <NavbarBrand href="/"><img src={Logo} id='logo' /></NavbarBrand>
+                        <NavbarBrand href="/"><img src={Logo} id='logo' alt='logo' /></NavbarBrand>
                         <NavbarToggler onClick={toggle} />
                         <Collapse isOpen={isOpen} navbar >
                             <Nav className='d-flex' id='navItemsContainer' navbar>
@@ -69,7 +68,7 @@ function App() {
                                     <Link to='/account' className='nav-link'>&#128100;</Link>
                                 </NavItem>
                                 <NavItem id='bagIcon'>
-                                    <Link to='/bag' className='nav-link'><img src={ShoppingBag} id='bag'/></Link>
+                                    <Link to='/bag' className='nav-link'><img src={ShoppingBag} id='bag' alt='bagIcon'/></Link>
                                 </NavItem>
                             </Nav>
                         </Collapse>
