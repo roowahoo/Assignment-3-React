@@ -55,14 +55,20 @@ export default function Shop() {
 
     }
 
+    const addToBagAnimation = ()=>{
+        document.getElementById('bag').className=''
+        void document.getElementById('bag').offsetWidth
+        document.getElementById('bag').className='addedToBag'
+    }
+
     const addToBag = async (e) => {
         console.log(e.target.value)
         if (isLoggedIn.id) {
             const response = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/bag/' + isLoggedIn.id + '/' + e.target.value + '/add')
             console.log(response.data)
-            document.getElementById('bag').className='addedToCart'
+            addToBagAnimation()
         } else {
-            alert('login')
+            alert('Please login')
         }
 
     }

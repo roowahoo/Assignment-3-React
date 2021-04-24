@@ -95,9 +95,9 @@ body{
     100%{transform: rotate(10deg)}
 }
 
-.addedToCart{
+.addedToBag{
     animation-name: bag;
-     animation-duration: 3s;
+    animation-duration: 3s;
 }
 
 
