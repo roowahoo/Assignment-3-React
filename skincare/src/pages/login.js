@@ -16,18 +16,33 @@ export default function Login() {
     const history = useHistory()
 
     const login = async () => {
-        history.push('/shop', {
-            'form': formData
-        })
-        const response = await axios.post(baseUrl + '/api/shoppers/login', {
-            'email': formData.email,
-            'password': formData.password
-        })
+        try {
+            const response = await axios.post(baseUrl + '/api/shoppers/login', {
+                'email': formData.email,
+                'password': formData.password
+            })
+            console.log(response.data)
+            console.log(response.status)
+            if (response.data !== 'Invalid Password' && response.data!=='No user found' ) {
+                localStorage.setItem('accessToken', response.data.accessToken);
+                localStorage.setItem('refreshToken', response.data.refreshToken);
+                history.push('/shop', {
+                    'form': formData
+                })
+            }else if(response.data !== 'No user found'){
+                alert('Invalid Password')
+            }else{
+                alert('No User Found')
+            }
 
-        localStorage.setItem('accessToken', response.data.accessToken);
-        localStorage.setItem('refreshToken', response.data.refreshToken);
-        console.log(response.data)
-        
+        } catch (e) {
+            alert('Error logging in')
+
+        }
+
+
+
+
 
     }
 
