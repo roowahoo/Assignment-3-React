@@ -23,15 +23,15 @@ export default function Login() {
             })
             console.log(response.data)
             console.log(response.status)
-            if (response.data !== 'Invalid Password' && response.data!=='No user found' ) {
+            if (response.data !== 'Invalid Password' && response.data !== 'No user found') {
                 localStorage.setItem('accessToken', response.data.accessToken);
                 localStorage.setItem('refreshToken', response.data.refreshToken);
                 history.push('/shop', {
                     'form': formData
                 })
-            }else if(response.data !== 'No user found'){
+            } else if (response.data !== 'No user found') {
                 alert('Invalid Password')
-            }else{
+            } else {
                 alert('No User Found')
             }
 
@@ -55,21 +55,18 @@ export default function Login() {
 
     return (
         <React.Fragment>
-            <h1>Home</h1>
-            {/* <div>
-                <label className='form-label'>Username:</label>
-                <input type='text' name='username' value={formData.username} onChange={updateFormFields} className='form-control'/>
-            </div> */}
-            <div>
-                <label className='form-label'>Email:</label>
-                <input type='text' name='email' value={formData.email} onChange={updateFormFields} className='form-control' />
-            </div>
-            <div>
-                <label className='form-label'>Password:</label>
-                <input type='text' name='password' value={formData.password} onChange={updateFormFields} className='form-control' />
-            </div>
-            <div className='d-flex justify-content-end'>
-                <button onClick={login} className='btn goldBtn mt-3'>Login</button>
+            <div className='form'>
+                <div>
+                    <label className='form-label'>Email:</label>
+                    <input type='text' name='email' value={formData.email} onChange={updateFormFields} className='form-control' />
+                </div>
+                <div>
+                    <label className='form-label'>Password:</label>
+                    <input type='password' name='password' value={formData.password} onChange={updateFormFields} className='form-control' />
+                </div>
+                <div className='d-flex justify-content-end'>
+                    <button onClick={login} className='btn goldBtn mt-5'>Login</button>
+                </div>
             </div>
 
         </React.Fragment>

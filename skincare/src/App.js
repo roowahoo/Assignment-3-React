@@ -35,17 +35,7 @@ function App() {
 
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
-    // const history = useHistory()
 
-    const logout = async () => {
-        const response = await axios.post(config.baseUrl + '/api/shoppers/logout', {
-            'refreshToken': localStorage.getItem('refreshToken')
-        })
-        console.log(response.data)
-        localStorage.setItem('accessToken', null);
-        localStorage.setItem('refreshToken', null);
-        // history.push('/shop')
-    }
 
     useEffect(() => {
         setInterval(async () => {
@@ -81,9 +71,6 @@ function App() {
                                 <NavItem id='bagIcon'>
                                     <Link to='/bag' className='nav-link'><img src={ShoppingBag} id='bag' /></Link>
                                 </NavItem>
-                                <div>
-                                    <button onClick={logout} className='btn goldBtn mt-2'>Logout</button>
-                                </div>
                             </Nav>
                         </Collapse>
                     </Navbar>

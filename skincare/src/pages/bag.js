@@ -81,35 +81,37 @@ export default function Bag() {
     return (
         <React.Fragment>
             <div>
-                <div>
 
-                    {bagItems.map((item, i) => (
-                        <div className='item-row' key={item.id}>
+                {bagItems.map((item, i) => (
+                    <div className='item-row row' key={item.id}>
+                        <div className='col-4'>
                             <img src={item.products.image_url} className='img-thumbnail' alt='product-thumbnail'></img>
-                            <div className='bagItemName'><b>{item.products.name}</b></div>
-                            <div>
-                                <input type='text' name={item.product_id} value={item.quantity} onChange={updateFormFields} size='2'></input>
-                                <button name={item.product_id} value={item.quantity} onClick={updateQuantity} className='m-2 penCursor'>&#9998;</button>
-                            </div>
-                            <button name={item.product_id} onClick={removeItem} className='my-5 crossCursor'>&#9747;</button>
-
+                        </div>
+                        <div className='bagItemName col-5'><b>{item.products.name}</b></div>
+                        <div className='col-1'>
+                            <input type='text' name={item.product_id} value={item.quantity} onChange={updateFormFields} size='2'></input>
+                            <button name={item.product_id} value={item.quantity} onClick={updateQuantity} className='m-2 penCursor'>&#9998;</button>
+                        </div>
+                        <div className='col-2'>
+                            <button name={item.product_id} onClick={removeItem} className='crossCursor'>&#9747;</button>
                         </div>
 
-                    ))}
-
-                    <div className='my-3'>
-                        <label className='form-label'>Shipping Address:</label>
-                        <input type='text' value={isLoggedIn.address} onChange={(e) => setAddress(e.target.value)} className='form-control'></input>
-                    </div>
-                    <div>
-                        <label className='form-label'>Contact Number:</label>
-                        <input type='text' onChange={(e) => setContact(e.target.value)} className='form-control'></input>
                     </div>
 
+                ))}
+
+                <div className='my-3'>
+                    <label className='form-label'>Shipping Address:</label>
+                    <input type='text' value={isLoggedIn.address} onChange={(e) => setAddress(e.target.value)} className='form-control'></input>
                 </div>
-                <div className='d-flex justify-content-center'>
-                    <button onClick={order} className='btn goldBtn my-3'>Checkout</button>
+                <div>
+                    <label className='form-label'>Contact Number:</label>
+                    <input type='text' onChange={(e) => setContact(e.target.value)} className='form-control'></input>
                 </div>
+
+            </div>
+            <div className='d-flex justify-content-center'>
+                <button onClick={order} className='btn goldBtn my-3'>Checkout</button>
             </div>
 
         </React.Fragment>

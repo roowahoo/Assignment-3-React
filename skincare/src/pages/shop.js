@@ -31,9 +31,9 @@ export default function Shop() {
 
     const renderPrice = (item) => {
         if (item.discounted_price !== null) {
-            return item.discounted_price/100
+            return item.discounted_price / 100
         } else {
-            return item.price/100
+            return item.price / 100
         }
     }
 
@@ -94,36 +94,38 @@ export default function Shop() {
     return (
         <React.Fragment>
             <div>
-                <label className='form-label'>Skintype:</label>
-                <select onChange={(e) => setSearchSkintype(e.target.value)} className='form-control'>
-                    <option value=''></option>
-                    <option value='1'>Oily</option>
-                    <option value='2'>Dry</option>
-                    <option value='3'>Combination</option>
-                    <option value='4'>Sensitive</option>
-                </select>
-                <label className='form-label'>Category:</label>
-                <select onChange={(e) => setSearchCategory(e.target.value)} className='form-control'>
-                    <option value=''></option>
-                    <option value='1'>Make-up Remover</option>
-                    <option value='3'>Face Wash</option>
-                    <option value='4'>Toner</option>
-                    <option value='5'>Essence</option>
-                    <option value='6'>Serum</option>
-                    <option value='7'>Lotion</option>
-                    <option value='8'>Cream</option>
-                    <option value='9'>Sunblock</option>
-                </select>
-                <label className='form-label'>Brand:</label>
-                <select onChange={(e) => setSearchBrand(e.target.value)} className='form-control'>
-                    <option value=''></option>
-                    <option value='1'>Klairs</option>
-                    <option value='3'>Cosrx</option>
-                    <option value='4'>SKIN&LAB</option>
-                    <option value='5'>Rovectin</option>
-                </select>
-                <div className='d-flex justify-content-end'>
-                    <button onClick={search} className='btn goldBtn my-3'>Search</button>
+                <div className='form'>
+                    <label className='form-label'>Skintype:</label>
+                    <select onChange={(e) => setSearchSkintype(e.target.value)} className='form-control'>
+                        <option value=''></option>
+                        <option value='1'>Oily</option>
+                        <option value='2'>Dry</option>
+                        <option value='3'>Combination</option>
+                        <option value='4'>Sensitive</option>
+                    </select>
+                    <label className='form-label'>Category:</label>
+                    <select onChange={(e) => setSearchCategory(e.target.value)} className='form-control'>
+                        <option value=''></option>
+                        <option value='1'>Make-up Remover</option>
+                        <option value='3'>Face Wash</option>
+                        <option value='4'>Toner</option>
+                        <option value='5'>Essence</option>
+                        <option value='6'>Serum</option>
+                        <option value='7'>Lotion</option>
+                        <option value='8'>Cream</option>
+                        <option value='9'>Sunblock</option>
+                    </select>
+                    <label className='form-label'>Brand:</label>
+                    <select onChange={(e) => setSearchBrand(e.target.value)} className='form-control'>
+                        <option value=''></option>
+                        <option value='1'>Klairs</option>
+                        <option value='3'>Cosrx</option>
+                        <option value='4'>SKIN&LAB</option>
+                        <option value='5'>Rovectin</option>
+                    </select>
+                    <div className='d-flex justify-content-end'>
+                        <button onClick={search} className='btn goldBtn my-3'>Search</button>
+                    </div>
                 </div>
                 <div className='card-div'>
                     {products.map(p => (

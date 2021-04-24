@@ -1,11 +1,15 @@
+import config from '../config'
 import React, { useState, useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
 export default function Account() {
 
     const [accountDetails, setAccountDetails] = useState({})
     const [password, setPassword] = useState('')
-    
+
+    const history = useHistory()
+
 
     useEffect(() => {
         const fetch = async () => {
@@ -21,26 +25,23 @@ export default function Account() {
         fetch()
     }, [])
 
-    const updateUsername=(e)=>{
-        let clone={...accountDetails}
-        clone.username=e.target.value
+    const updateUsername = (e) => {
+        let clone = { ...accountDetails }
+        clone.username = e.target.value
         setAccountDetails(clone)
     }
 
-    const updateEmail=(e)=>{
-        let clone={...accountDetails}
-        clone.email=e.target.value
+    const updateEmail = (e) => {
+        let clone = { ...accountDetails }
+        clone.email = e.target.value
         setAccountDetails(clone)
     }
 
-    const updateAddress=(e)=>{
-        let clone={...accountDetails}
-        clone.address=e.target.value
+    const updateAddress = (e) => {
+        let clone = { ...accountDetails }
+        clone.address = e.target.value
         setAccountDetails(clone)
     }
-
-
-
 
     const update = async () => {
         console.log('here')
@@ -49,10 +50,19 @@ export default function Account() {
             'username': accountDetails.username,
             'email': accountDetails.email,
             'address': accountDetails.address,
-            'password':password
+            'password': password
         })
         console.log(response.data)
-        
+
+    }
+    const logout = async () => {
+        const response = await axios.post(config.baseUrl + '/api/shoppers/logout', {
+            'refreshToken': localStorage.getItem('refreshToken')
+        })
+        console.log(response.data)
+        localStorage.setItem('accessToken', null);
+        localStorage.setItem('refreshToken', null);
+        history.push('/shop')
     }
 
 
@@ -75,10 +85,11 @@ export default function Account() {
                 </div>
                 <div>
                     <label className='form-label'>Password:</label>
-                    <input onChange={(e)=>setPassword(e.target.value)} value={password} type='text' className='form-control'></input>
+                    <input onChange={(e) => setPassword(e.target.value)} value={password} type='text' className='form-control'></input>
                 </div>
-                <div className='d-flex justify-content-end'>
-                <button onClick={update} className='btn goldBtn my-3'>Update</button>
+                <div className='d-flex justify-content-between'>
+                    <button onClick={update} className='btn goldBtn my-3'>Update</button>
+                    <button onClick={logout} className='btn goldBtn my-3'>Logout</button>
                 </div>
             </div>
 
