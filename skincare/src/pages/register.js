@@ -34,19 +34,19 @@ export default function Register() {
             <div className='form'>
                 <div>
                     <label className='form-label'>Username:</label>
-                    <input type='text' name='username' value={formData.username} onChange={updateFormFields} className='form-control' />
+                    <input type='text' maxLength='100' name='username' value={formData.username} onChange={updateFormFields} className='form-control' />
                 </div>
                 <div>
                     <label className='form-label'>Email:</label>
-                    <input type='text' name='email' value={formData.email} onChange={updateFormFields} className='form-control' />
+                    <input type='text' maxLength='350' name='email' value={formData.email} onChange={updateFormFields} className='form-control' />
                 </div>
                 <div>
                     <label className='form-label'>Password:</label>
-                    <input type='text' name='password' value={formData.password} onChange={updateFormFields} className='form-control' />
+                    <input type='text' maxLength='80' name='password' value={formData.password} onChange={updateFormFields} className='form-control' />
                 </div>
                 <div>
                     <label className='form-label'>Address:</label>
-                    <input type='text' name='address' value={formData.address} onChange={updateFormFields} className='form-control' />
+                    <input type='text' maxLength='500' name='address' value={formData.address} onChange={updateFormFields} className='form-control' />
                 </div>
                 <div className='d-flex justify-content-end'>
                     <button onClick={register} className='btn goldBtn mt-3'>Register</button>

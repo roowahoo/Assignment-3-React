@@ -41,8 +41,8 @@ body{
 
 }
 
-.penCursor{
-    color:gray;
+.checkCursor{
+    color:rgb(104, 212, 104);
     background-color: transparent;
     border:none;
     font-size: 20px;
@@ -52,7 +52,6 @@ body{
     background-color: transparent;
     border:none;
     font-size: 20px;
-    margin-left:50px
 }
 
 .card-div{
@@ -86,6 +85,19 @@ body{
     padding-left:20px;
     word-wrap: break-word;
     width:60%
+}
+
+@keyframes bag{
+    0%{transform: rotate(10deg)}
+    25%{transform: rotate(-20deg)}
+    50%{transform: rotate(10deg)}
+    75%{transform: rotate(-20deg)}
+    100%{transform: rotate(10deg)}
+}
+
+.addedToCart{
+    animation-name: bag;
+     animation-duration: 3s;
 }
 
 

@@ -69,7 +69,7 @@ function App() {
                                     <Link to='/account' className='nav-link'>&#128100;</Link>
                                 </NavItem>
                                 <NavItem id='bagIcon'>
-                                    <Link to='/bag' className='nav-link'><img src={ShoppingBag} id='bag' /></Link>
+                                    <Link to='/bag' className='nav-link'><img src={ShoppingBag} id='bag'/></Link>
                                 </NavItem>
                             </Nav>
                         </Collapse>

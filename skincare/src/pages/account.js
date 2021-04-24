@@ -73,19 +73,19 @@ export default function Account() {
             <div>
                 <div>
                     <label className='form-label'>Username:</label>
-                    <input onChange={updateUsername} type='text' value={accountDetails.username} className='form-control' name='username'></input>
+                    <input onChange={updateUsername} type='text' maxLength='100' value={accountDetails.username} className='form-control' name='username'></input>
                 </div>
                 <div>
                     <label className='form-label'>Email:</label>
-                    <input onChange={updateEmail} type='text' value={accountDetails.email} className='form-control'></input>
+                    <input onChange={updateEmail} type='text' maxLength='350' value={accountDetails.email} className='form-control'></input>
                 </div>
                 <div>
                     <label className='form-label'>Address:</label>
-                    <input onChange={updateAddress} type='text' value={accountDetails.address} className='form-control'></input>
+                    <input onChange={updateAddress} type='text' maxLength='500' value={accountDetails.address} className='form-control'></input>
                 </div>
                 <div>
                     <label className='form-label'>Password:</label>
-                    <input onChange={(e) => setPassword(e.target.value)} value={password} type='text' className='form-control'></input>
+                    <input onChange={(e) => setPassword(e.target.value)} value={password} type='text' maxLength='80' className='form-control'></input>
                 </div>
                 <div className='d-flex justify-content-between'>
                     <button onClick={update} className='btn goldBtn my-3'>Update</button>

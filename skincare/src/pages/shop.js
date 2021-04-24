@@ -60,6 +60,7 @@ export default function Shop() {
         if (isLoggedIn.id) {
             const response = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/bag/' + isLoggedIn.id + '/' + e.target.value + '/add')
             console.log(response.data)
+            document.getElementById('bag').className='addedToCart'
         } else {
             alert('login')
         }

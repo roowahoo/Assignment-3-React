@@ -58,11 +58,11 @@ export default function Login() {
             <div className='form'>
                 <div>
                     <label className='form-label'>Email:</label>
-                    <input type='text' name='email' value={formData.email} onChange={updateFormFields} className='form-control' />
+                    <input type='text' maxLength='350' name='email' value={formData.email} onChange={updateFormFields} className='form-control' />
                 </div>
                 <div>
                     <label className='form-label'>Password:</label>
-                    <input type='password' name='password' value={formData.password} onChange={updateFormFields} className='form-control' />
+                    <input type='password' maxLength='80' name='password' value={formData.password} onChange={updateFormFields} className='form-control' />
                 </div>
                 <div className='d-flex justify-content-end'>
                     <button onClick={login} className='btn goldBtn mt-5'>Login</button>

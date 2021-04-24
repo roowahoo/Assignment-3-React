@@ -87,13 +87,16 @@ export default function Bag() {
                         <div className='col-4'>
                             <img src={item.products.image_url} className='img-thumbnail' alt='product-thumbnail'></img>
                         </div>
+                        
                         <div className='bagItemName col-5'><b>{item.products.name}</b></div>
-                        <div className='col-1'>
-                            <input type='text' name={item.product_id} value={item.quantity} onChange={updateFormFields} size='2'></input>
-                            <button name={item.product_id} value={item.quantity} onClick={updateQuantity} className='m-2 penCursor'>&#9998;</button>
+                        
+                        <div className='col-3 d-flex justify-content-center'>
+                            <input type='text' name={item.product_id} value={item.quantity} onChange={updateFormFields} size='1'></input>
+                            <button name={item.product_id} value={item.quantity} onClick={updateQuantity} className='m-1 checkCursor'>&#10004;</button>
                         </div>
-                        <div className='col-2'>
-                            <button name={item.product_id} onClick={removeItem} className='crossCursor'>&#9747;</button>
+                        <div class="w-100"></div>
+                        <div className='mx-auto'>
+                            <button name={item.product_id} onClick={removeItem} className='crossCursor'>&#10006;</button>
                         </div>
 
                     </div>
