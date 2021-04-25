@@ -38,7 +38,7 @@ function App() {
 
     useEffect(() => {
         setInterval(async () => {
-            const response = await axios.post(config.baseUrl + 'api/shoppers/refresh', {
+            const response = await axios.post(config.baseUrl + '/api/shoppers/refresh', {
                 refreshToken: localStorage.getItem('refreshToken')
             })
             localStorage.setItem('accessToken', response.data.accessToken)
