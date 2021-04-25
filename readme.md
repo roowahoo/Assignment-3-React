@@ -63,5 +63,30 @@ User can add items to bag and go to their bag to see all items as well as change
 
 [Google fonts](https://fonts.google.com/) was used to import fonts.
 
+[Stripes](https://stripe.com/en-sg) was used to process payment.
+
+# Testing
+## Test that user can register for an account
+1. Click on 'register'.
+2. Fill in the form and click register
+3. Go to profile to view created profile and go to bag to start adding items to bag.
+
+## Test adding products to bag
+1. Go to shop
+2. Click 'add to bag' for product of choice
+3. Click on bag icon on top right to find all items that have been added to bag.
+
+## Test product search form
+1. Select one input field and click 'search'
+2. Products will be filtered by search query below.
+
+## Test checkout and payment
+1. Click on bag icon to go to shopping bag
+2. Enter shipping dettails
+3. Click 'checkout'
+4. Check details and click 'pay' once confirmed
+5. User will be brought to Stripes checkout page
+
+
 
 
