@@ -14,27 +14,25 @@ export default function Shop() {
     const [searchBrand, setSearchBrand] = useState(0)
 
     useEffect(() => {
-        
+
         const fetch = async () => {
-            const productsList = await axios.get(config.baseUrl+'/api/products')
+            const productsList = await axios.get(config.baseUrl + '/api/products')
             setProduct(productsList.data)
             console.log(productsList.data)
-            try{
-                 const token = await axios.get(config.baseUrl+'/api/shoppers/profile', {
-                'headers': {
-                    'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
-                }
-            })
-            console.log(token.data)
-            setIsLoggedIn(token.data)
+            try {
+                const token = await axios.get(config.baseUrl + '/api/shoppers/profile', {
+                    'headers': {
+                        'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
+                    }
+                })
+                console.log(token.data)
+                setIsLoggedIn(token.data)
 
-            }catch(e){
-                if(response.status===403){
-                    console.log('User not logged in')
-                }else{
-                    console.log('error')
-                }
-                
+            } catch (e) {
+
+                console.log(e)
+
+
             }
         }
         fetch()
@@ -66,16 +64,16 @@ export default function Shop() {
 
     }
 
-    const addToBagAnimation = ()=>{
-        document.getElementById('bag').className=''
+    const addToBagAnimation = () => {
+        document.getElementById('bag').className = ''
         void document.getElementById('bag').offsetWidth
-        document.getElementById('bag').className='addedToBag'
+        document.getElementById('bag').className = 'addedToBag'
     }
 
     const addToBag = async (e) => {
         console.log(e.target.value)
         if (isLoggedIn.id) {
-            const response = await axios.get(config.baseUrl+'/api/bag/' + isLoggedIn.id + '/' + e.target.value + '/add')
+            const response = await axios.get(config.baseUrl + '/api/bag/' + isLoggedIn.id + '/' + e.target.value + '/add')
             console.log(response.data)
             addToBagAnimation()
         } else {
@@ -86,21 +84,21 @@ export default function Shop() {
 
     const search = async (e) => {
         if (searchSkintype) {
-            const response = await axios.post(config.baseUrl+'/api/products/skintype', {
+            const response = await axios.post(config.baseUrl + '/api/products/skintype', {
                 'skintype_id': searchSkintype
             })
             setProduct(response.data)
             console.log(response.data)
         }
         if (searchCategory) {
-            const response = await axios.post(config.baseUrl+'/api/products/category', {
+            const response = await axios.post(config.baseUrl + '/api/products/category', {
                 'category_id': searchCategory
             })
             setProduct(response.data)
             console.log(response.data)
         }
         if (searchBrand) {
-            const response = await axios.post(config.baseUrl+'/api/products/brand', {
+            const response = await axios.post(config.baseUrl + '/api/products/brand', {
                 'brand_id': searchBrand
             })
             setProduct(response.data)
