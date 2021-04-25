@@ -20,7 +20,7 @@ export default function Shop() {
             setProduct(productsList.data)
             console.log(productsList.data)
             try{
-                 const token = await axios.get(config.baseUrl+'api/shoppers/profile', {
+                 const token = await axios.get(config.baseUrl+'/api/shoppers/profile', {
                 'headers': {
                     'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
                 }
