@@ -59,10 +59,6 @@ User can add items to bag and go to their bag to see all items as well as change
 
 [Reactstrap](https://reactstrap.github.io/components/form/) was used for navbar.
 
-[Canva](www.canva.com) was used for creating the logo.  
-
-[Google fonts](https://fonts.google.com/) was used to import fonts.
-
 [Stripes](https://stripe.com/en-sg) was used to process payment.
 
 # Testing
@@ -86,6 +82,20 @@ User can add items to bag and go to their bag to see all items as well as change
 3. Click 'checkout'
 4. Check details and click 'pay' once confirmed
 5. User will be brought to Stripes checkout page
+
+# Deployment
+Hosting Platform: Netlify
+Database platform: PostgreSQL and deployed to Heroku
+Database connection platform: DBeaver
+
+# Credits
+[Canva](www.canva.com) was used for creating the logo.
+
+[Google fonts](https://fonts.google.com/) was used to import fonts.
+
+[Paul's Github](https://github.com/kunxin-chor?tab=repositories) was used as reference to recreate code that has been taught in class.
+
+[Stack Overflow](https://stackoverflow.com/) was used for debugging help.
 
 
 
