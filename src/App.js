@@ -18,7 +18,7 @@ import {
     NavItem
 } from 'reactstrap';
 
-// import Home from './pages/home'
+import Home from './pages/home'
 import Login from './pages/login'
 import Shop from './pages/shop'
 import Account from './pages/account'
@@ -77,9 +77,9 @@ function App() {
             </div>
             <Switch>
                 <div className='container-fluid p-3'>
-                    {/* <Route exact path='/'>
+                    <Route exact path='/'>
                     <Home/>
-                </Route> */}
+                </Route>
                     <Route exact path='/login'>
                         <Login />
                     </Route>
