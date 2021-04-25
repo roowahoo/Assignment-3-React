@@ -29,7 +29,12 @@ export default function Shop() {
             setIsLoggedIn(token.data)
 
             }catch(e){
-                console.log('User not logged in')
+                if(response.status===403){
+                    console.log('User not logged in')
+                }else{
+                    console.log('error')
+                }
+                
             }
         }
         fetch()
