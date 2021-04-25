@@ -1,3 +1,4 @@
+import config from '../config'
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
@@ -17,7 +18,7 @@ export default function Bag() {
         const fetch = async () => {
 
             try {
-                const token = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/shoppers/profile', {
+                const token = await axios.get(config.baseUrl+'/api/shoppers/profile', {
                     'headers': {
                         'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
                     }
@@ -26,7 +27,7 @@ export default function Bag() {
                 console.log(token.status)
                 setIsLoggedIn(token.data)
 
-                const bag = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/bag/' + token.data.id)
+                const bag = await axios.get(config.baseUrl+'/api/bag/' + token.data.id)
                 console.log(bag.data)
                 setBagItems(bag.data)
 
@@ -51,27 +52,27 @@ export default function Bag() {
         console.log(isLoggedIn.id)
         console.log(e.target.name)
         console.log(e.target.value)
-        const response = await axios.post('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/bag/' + isLoggedIn.id + '/' + e.target.name + '/updateQuantity', {
+        const response = await axios.post(config.baseUrl+'/api/bag/' + isLoggedIn.id + '/' + e.target.name + '/updateQuantity', {
             'newQuantity': e.target.value
         })
         console.log(response.data)
     }
 
     const removeItem = async (e) => {
-        const response = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/bag/' + isLoggedIn.id + '/' + e.target.name + '/remove')
+        const response = await axios.get(config.baseUrl+'/api/bag/' + isLoggedIn.id + '/' + e.target.name + '/remove')
         console.log(response.data)
     }
 
     const order = async () => {
 
-        const order = await axios.post('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/order/' + isLoggedIn.id, {
+        const order = await axios.post(config.baseUrl+'/api/order/' + isLoggedIn.id, {
             'shopper_id': isLoggedIn.id,
             'shipping_address': address,
             'contact_number': contact
         })
         console.log(order.data)
 
-        const updateOrder = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/order/' + isLoggedIn.id)
+        const updateOrder = await axios.get(config.baseUrl+'/api/order/' + isLoggedIn.id)
         console.log(updateOrder.data)
         history.push('/review', {
             'order': updateOrder.data

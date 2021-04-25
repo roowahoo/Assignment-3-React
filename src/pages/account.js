@@ -13,7 +13,7 @@ export default function Account() {
 
     useEffect(() => {
         const fetch = async () => {
-            const response = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/shoppers/profile', {
+            const response = await axios.get(config.baseUrl+'/api/shoppers/profile', {
                 'headers': {
                     'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
                 }
@@ -46,7 +46,7 @@ export default function Account() {
     const update = async () => {
         console.log('here')
         console.log(accountDetails.username)
-        const response = await axios.post('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/shoppers/profile/' + accountDetails.id + '/update', {
+        const response = await axios.post(config.baseUrl+'/api/shoppers/profile/' + accountDetails.id + '/update', {
             'username': accountDetails.username,
             'email': accountDetails.email,
             'address': accountDetails.address,

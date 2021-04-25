@@ -1,8 +1,7 @@
+import config from '../config'
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
-
-const baseUrl = 'https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io'
 
 export default function Login() {
     const [formData, setFormData] = useState({
@@ -17,7 +16,7 @@ export default function Login() {
 
     const login = async () => {
         try {
-            const response = await axios.post(baseUrl + '/api/shoppers/login', {
+            const response = await axios.post(config.baseUrl + '/api/shoppers/login', {
                 'email': formData.email,
                 'password': formData.password
             })

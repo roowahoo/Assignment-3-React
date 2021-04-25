@@ -1,3 +1,4 @@
+import config from '../config'
 import React, { useState } from 'react'
 import axios from 'axios'
 
@@ -18,7 +19,7 @@ export default function Register() {
     }
 
     const register = async () => {
-        const response = await axios.post('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/shoppers/register', {
+        const response = await axios.post(config.baseUrl+'/api/shoppers/register', {
             'username': formData.username,
             'email': formData.email,
             'password': formData.password,

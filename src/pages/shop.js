@@ -1,3 +1,4 @@
+import config from '../config'
 import React, { useState, useEffect } from 'react'
 // import { useLocation } from 'react-router-dom'
 import axios from 'axios'
@@ -14,11 +15,11 @@ export default function Shop() {
 
     useEffect(() => {
         const fetch = async () => {
-            const productsList = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/products')
+            const productsList = await axios.get(config.baseUrl+'/api/products')
             setProduct(productsList.data)
             console.log(productsList.data)
 
-            const token = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/shoppers/profile', {
+            const token = await axios.get(config.baseUrl+'api/shoppers/profile', {
                 'headers': {
                     'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
                 }
@@ -64,7 +65,7 @@ export default function Shop() {
     const addToBag = async (e) => {
         console.log(e.target.value)
         if (isLoggedIn.id) {
-            const response = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/bag/' + isLoggedIn.id + '/' + e.target.value + '/add')
+            const response = await axios.get(config.baseUrl+'/api/bag/' + isLoggedIn.id + '/' + e.target.value + '/add')
             console.log(response.data)
             addToBagAnimation()
         } else {
@@ -75,21 +76,21 @@ export default function Shop() {
 
     const search = async (e) => {
         if (searchSkintype) {
-            const response = await axios.post('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/products/skintype', {
+            const response = await axios.post(config.baseUrl+'/api/products/skintype', {
                 'skintype_id': searchSkintype
             })
             setProduct(response.data)
             console.log(response.data)
         }
         if (searchCategory) {
-            const response = await axios.post('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/products/category', {
+            const response = await axios.post(config.baseUrl+'/api/products/category', {
                 'category_id': searchCategory
             })
             setProduct(response.data)
             console.log(response.data)
         }
         if (searchBrand) {
-            const response = await axios.post('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/products/brand', {
+            const response = await axios.post(config.baseUrl+'/api/products/brand', {
                 'brand_id': searchBrand
             })
             setProduct(response.data)

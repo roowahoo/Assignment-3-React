@@ -25,7 +25,7 @@ export default function Review() {
                 console.log(token.data)
                 setIsLoggedIn(token.data)
 
-                const bag = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/bag/' + token.data.id)
+                const bag = await axios.get(config.baseUrl+'/api/bag/' + token.data.id)
                 console.log(bag.data)
                 setBagItems(bag.data)
 
@@ -58,7 +58,7 @@ export default function Review() {
                     <p>Contact: {contact}</p>
                 </div>
                 <div className='d-flex justify-content-end'>
-                    <a className='btn goldBtn' href={'https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/checkout/' + isLoggedIn.id}>Pay</a>
+                    <a className='btn goldBtn' href={config.baseUrl+'/api/checkout/' + isLoggedIn.id}>Pay</a>
                 </div>
             </div>
 
