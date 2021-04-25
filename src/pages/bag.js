@@ -37,7 +37,7 @@ export default function Bag() {
 
         }
         fetch()
-    }, [])
+    }, [history])
 
     const updateFormFields = (e) => {
         let clone = [...bagItems]

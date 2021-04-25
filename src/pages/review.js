@@ -17,7 +17,7 @@ export default function Review() {
         const fetch = async () => {
 
             try {
-                const token = await axios.get('https://3000-indigo-orangutan-nf30a8jb.ws-us03.gitpod.io/api/shoppers/profile', {
+                const token = await axios.get(config.baseUrl + '/api/shoppers/profile', {
                     'headers': {
                         'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
                     }
@@ -36,7 +36,7 @@ export default function Review() {
 
         }
         fetch()
-    }, [])
+    }, [history])
 
 
     return (
