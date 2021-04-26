@@ -97,6 +97,8 @@ Database connection platform: DBeaver
 
 [Stack Overflow](https://stackoverflow.com/) was used for debugging help.
 
+[Wishtrend] (https://www.wishtrend.com/category/skincare/) was source to creating mock products in shop.
+
 
 
 
