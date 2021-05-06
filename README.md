@@ -1,70 +1,108 @@
-# Getting Started with Create React App
+https://hardcore-stonebraker-ed8b84.netlify.app/
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# The Skin Shop
+## Site Owner Goals
+To create a platform where buyers can purchase skincare products from.
 
-## Available Scripts
+# User Stories
+1. As a user, I want to be able to search for skincare products by categories, brands or skintype to find a product that will work for my skin.
+2. As a user, I want a smooth checkout process where I am able to add items to cart and make payment easily.
 
-In the project directory, you can run:
+# Scope
+## Functional
+1. User can register for an account and start adding items to the shopping bag and checkout.
+2. User can update their profile details.
+3. User can view items that have been added to the bag and see the total amount of the items.
+4. User can search for products by product category, brand and skintype.
 
-### `yarn start`
+## Non-Functional
+1. Mobile Responsiveness
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Information Architecture
+## Content Inventory
+1. Product image, name, brand, description and price in the shop.
+2. Shopper profile.
+3. Shopper's bag items.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+# Interaction Design
+1. Understandability: Forms have clear input titles and actions of buttons are straightforward.
+2. Learnability: Navigation links are positioned at the top where users are familiar with and are consistent throughout the pages. Cursors change on links on hover to indicate that it is clickable.
+3. Operability: 
+- Links to stripe payment are working
+- Alert prompts user to login when accessing protected pages
+- Alert notifies users of incorrect email or password in login
+4. Attractiveness
+- Margin and padding are present to improve readability
+- Layput changes according to screen size
 
-### `yarn test`
+# Structure
+## Logical Schema Diagram
+![Logical Schema Diagram](src/images/logical_schema_diagram.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Surface
+## Visual Design
+1. Colour theme of app go well together and are easy on the eyes
+2. Fonts are readable and easy on the eyes
 
-### `yarn build`
+# Features
+## Registration
+Users can register for an account and start shopping
+## Profile
+Users can edit their profile information such as address, username or password
+## Search 
+Users can search for products by brand, skintype or category
+## Bag
+User can add items to bag and go to their bag to see all items as well as change the quantity of items.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Technologies
+[Gitpod](www.gitpod.io) was the coding platform used.  
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[GitHub](github.com) was used for repositories.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+[Bootstrap] (https://getbootstrap.com/docs/5.0/getting-started/introduction/) was used for alignment.
 
-### `yarn eject`
+[Reactstrap](https://reactstrap.github.io/components/form/) was used for navbar.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+[Stripes](https://stripe.com/en-sg) was used to process payment.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# Testing
+## Test that user can register for an account
+1. Click on 'register'.
+2. Fill in the form and click register
+3. Go to profile to view created profile and go to bag to start adding items to bag.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Test adding products to bag
+1. Go to shop
+2. Click 'add to bag' for product of choice
+3. Click on bag icon on top right to find all items that have been added to bag.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Test product search form
+1. Select one input field and click 'search'
+2. Products will be filtered by search query below.
 
-## Learn More
+## Test checkout and payment
+1. Click on bag icon to go to shopping bag
+2. Enter shipping dettails
+3. Click 'checkout'
+4. Check details and click 'pay' once confirmed
+5. User will be brought to Stripes checkout page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Deployment
+Hosting Platform: Netlify
+Database platform: PostgreSQL and deployed to Heroku
+Database connection platform: DBeaver
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Credits
+[Canva](www.canva.com) was used for creating the logo.
 
-### Code Splitting
+[Google fonts](https://fonts.google.com/) was used to import fonts.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+[Paul's Github](https://github.com/kunxin-chor?tab=repositories) was used as reference to recreate code that has been taught in class.
 
-### Analyzing the Bundle Size
+[Stack Overflow](https://stackoverflow.com/) was used for debugging help.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+[Wishtrend] (https://www.wishtrend.com/category/skincare/) was source to creating mock products in shop.
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
