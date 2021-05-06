@@ -35,6 +35,10 @@ To create a platform where buyers can purchase skincare products from.
 - Margin and padding are present to improve readability
 - Layput changes according to screen size
 
+# Structure
+## Logical Schema Diagram
+![Logical Schema Diagram](images/logical_schema_diagram.png)
+
 # Surface
 ## Visual Design
 1. Colour theme of app go well together and are easy on the eyes
