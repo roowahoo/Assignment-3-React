@@ -38,6 +38,8 @@ To create a platform where buyers can purchase skincare products from.
 # Structure
 ## Logical Schema Diagram
 ![Logical Schema Diagram](src/images/logical_schema_diagram.png)
+## Entity Relationship Diagram
+![ER Diagram](src/images/ER_diagram.png)
 
 # Surface
 ## Visual Design
