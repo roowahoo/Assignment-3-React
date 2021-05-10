@@ -18,7 +18,7 @@ export default function Bag() {
         const fetch = async () => {
 
             try {
-                const token = await axios.get(config.baseUrl+'/api/shoppers/profile', {
+                const token = await axios.get(config.baseUrl + '/api/shoppers/profile', {
                     'headers': {
                         'Authorization': 'Bearer ' + localStorage.getItem('accessToken')
                     }
@@ -27,7 +27,7 @@ export default function Bag() {
                 console.log(token.status)
                 setIsLoggedIn(token.data)
 
-                const bag = await axios.get(config.baseUrl+'/api/bag/' + token.data.id)
+                const bag = await axios.get(config.baseUrl + '/api/bag/' + token.data.id)
                 console.log(bag.data)
                 setBagItems(bag.data)
 
@@ -52,32 +52,38 @@ export default function Bag() {
         console.log(isLoggedIn.id)
         console.log(e.target.name)
         console.log(e.target.value)
-        const response = await axios.post(config.baseUrl+'/api/bag/' + isLoggedIn.id + '/' + e.target.name + '/updateQuantity', {
+        const response = await axios.post(config.baseUrl + '/api/bag/' + isLoggedIn.id + '/' + e.target.name + '/updateQuantity', {
             'newQuantity': e.target.value
         })
         console.log(response.data)
     }
 
     const removeItem = async (e) => {
-        const response = await axios.get(config.baseUrl+'/api/bag/' + isLoggedIn.id + '/' + e.target.name + '/remove')
+        const response = await axios.get(config.baseUrl + '/api/bag/' + isLoggedIn.id + '/' + e.target.name + '/remove')
         window.location.reload()
         console.log(response.data)
     }
 
     const order = async () => {
+        if (address === '' || contact === '') {
+            alert('Plesse enter all fields')
+        } else {
+            const order = await axios.post(config.baseUrl + '/api/order/' + isLoggedIn.id, {
+                'shopper_id': isLoggedIn.id,
+                'shipping_address': address,
+                'contact_number': contact
+            })
+            console.log(order.data)
 
-        const order = await axios.post(config.baseUrl+'/api/order/' + isLoggedIn.id, {
-            'shopper_id': isLoggedIn.id,
-            'shipping_address': address,
-            'contact_number': contact
-        })
-        console.log(order.data)
+            const updateOrder = await axios.get(config.baseUrl + '/api/order/' + isLoggedIn.id)
+            console.log(updateOrder.data)
+            history.push('/review', {
+                'order': updateOrder.data
+            })
 
-        const updateOrder = await axios.get(config.baseUrl+'/api/order/' + isLoggedIn.id)
-        console.log(updateOrder.data)
-        history.push('/review', {
-            'order': updateOrder.data
-        })
+        }
+
+
     }
 
     const renderPrice = (item) => {
@@ -94,24 +100,24 @@ export default function Bag() {
 
                 {bagItems.map((item) => (
                     // <div className='container'>
-                        <div className='item-row row' key={item.id}>
-                            <div className='col-3'>
-                                <img src={item.products.image_url} className='img-thumbnail' alt='product-thumbnail'></img>
-                            </div>
-
-                            <div className='bagItemName col-5'><b>{item.products.name}</b></div>
-
-                            <div className='col-4 d-flex justify-content-center'>
-                                <input type='text' name={item.product_id} value={item.quantity} onChange={updateFormFields} size='1'></input>
-                                <button name={item.product_id} value={item.quantity} onClick={updateQuantity} className='m-1 checkCursor'>&#10004;</button>
-                                <h5 className='pt-1 ps-1'>${renderPrice(item)}</h5>
-                            </div>
-                            <div className="w-100"></div>
-                            <div className='mx-auto'>
-                                <button name={item.product_id} onClick={removeItem} className='crossCursor'>&#10006;</button>
-                            </div>
-
+                    <div className='item-row row' key={item.id}>
+                        <div className='col-3'>
+                            <img src={item.products.image_url} className='img-thumbnail' alt='product-thumbnail'></img>
                         </div>
+
+                        <div className='bagItemName col-5'><b>{item.products.name}</b></div>
+
+                        <div className='col-4 d-flex justify-content-center'>
+                            <input type='text' name={item.product_id} value={item.quantity} onChange={updateFormFields} size='1'></input>
+                            <button name={item.product_id} value={item.quantity} onClick={updateQuantity} className='m-1 checkCursor'>&#10004;</button>
+                            <h5 className='pt-1 ps-1'>${renderPrice(item)}</h5>
+                        </div>
+                        <div className="w-100"></div>
+                        <div className='mx-auto'>
+                            <button name={item.product_id} onClick={removeItem} className='crossCursor'>&#10006;</button>
+                        </div>
+
+                    </div>
                     // </div>
 
                 ))}
