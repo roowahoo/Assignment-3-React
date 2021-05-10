@@ -60,6 +60,7 @@ export default function Bag() {
 
     const removeItem = async (e) => {
         const response = await axios.get(config.baseUrl+'/api/bag/' + isLoggedIn.id + '/' + e.target.name + '/remove')
+        location.reload()
         console.log(response.data)
     }
 
