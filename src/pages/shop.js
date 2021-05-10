@@ -123,21 +123,21 @@ export default function Shop() {
                     <select onChange={(e) => setSearchCategory(e.target.value)} className='form-control'>
                         <option value=''></option>
                         <option value='1'>Make-up Remover</option>
-                        <option value='3'>Face Wash</option>
-                        <option value='4'>Toner</option>
-                        <option value='5'>Essence</option>
-                        <option value='6'>Serum</option>
-                        <option value='7'>Lotion</option>
-                        <option value='8'>Cream</option>
-                        <option value='9'>Sunblock</option>
+                        <option value='2'>Face Wash</option>
+                        <option value='3'>Toner</option>
+                        <option value='4'>Essence</option>
+                        <option value='5'>Serum</option>
+                        <option value='6'>Lotion</option>
+                        <option value='7'>Cream</option>
+                        <option value='8'>Sunblock</option>
                     </select>
                     <label className='form-label'>Brand:</label>
                     <select onChange={(e) => setSearchBrand(e.target.value)} className='form-control'>
                         <option value=''></option>
-                        <option value='1'>Klairs</option>
-                        <option value='3'>Cosrx</option>
+                        <option value='2'>Klairs</option>
+                        <option value='1'>Cosrx</option>
                         <option value='4'>SKIN&LAB</option>
-                        <option value='5'>Rovectin</option>
+                        <option value='3'>Rovectin</option>
                     </select>
                     <div className='d-flex justify-content-end'>
                         <button onClick={search} className='btn goldBtn my-3'>Search</button>
