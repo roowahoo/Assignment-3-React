@@ -38,8 +38,12 @@ body{
     right:0
 }
 
-#accountIcon{
+#bagIcon{
     margin-left:auto;
+}
+
+#accountIcon{
+    /* margin-left:auto; */
     font-size: 30px;
 
 }

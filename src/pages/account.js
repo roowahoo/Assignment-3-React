@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
-export default function Account() {
+export default function Account({userLoggedIn}) {
 
     const [accountDetails, setAccountDetails] = useState({})
     const [password, setPassword] = useState('')
@@ -62,6 +62,7 @@ export default function Account() {
         console.log(response.data)
         localStorage.setItem('accessToken', null);
         localStorage.setItem('refreshToken', null);
+        userLoggedIn('');
         history.push('/shop')
     }
 

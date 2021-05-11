@@ -39,11 +39,6 @@ function App() {
 
     useEffect(() => {
 
-        // if (localStorage.getItem('accessToken') !== 'null') {
-        //     setIsLoggedIn('Logged In')
-
-        // }
-
         setInterval(async () => {
             const response = await axios.post(config.baseUrl + '/api/shoppers/refresh', {
                 refreshToken: localStorage.getItem('refreshToken')
@@ -57,50 +52,50 @@ function App() {
 
 
 
-    return  (
+    return (
 
         <Router>
-            <React.Fragment>
-                <Switch>
-                    <Navbar color="light" fixed='top' light expand="md" id='navbar'>
-                        <NavbarBrand href="/"><img src={Logo} id='logo' alt='logo' /></NavbarBrand>
-                        <NavbarToggler onClick={toggle} />
-                        <Collapse isOpen={isOpen} navbar >
-                            <Nav className='d-flex' id='navItemsContainer' navbar>
-                                <NavItem style={{display:isLoggedIn?'none':'block'}}>
-                                    <Link to='/login' className='nav-link'>Login</Link>
-                                </NavItem>
-                                <NavItem>
-                                    <Link to='/shop' className='nav-link'>Shop</Link>
-                                </NavItem>
-                                <NavItem>
-                                    <Link to='/register' className='nav-link'>Register</Link>
-                                </NavItem>
-                                <NavItem id='accountIcon'>
-                                    <Link to='/account' className='nav-link'>&#128100;</Link>
-                                </NavItem>
-                                <NavItem id='bagIcon'>
-                                    <Link to='/bag' className='nav-link'><img src={ShoppingBag} id='bag' alt='bagIcon' /></Link>
-                                </NavItem>
-                            </Nav>
-                        </Collapse>
-                    </Navbar>
-                </Switch>
-            </React.Fragment>
+            {/* <React.Fragment>
+                <Switch> */}
+            <Navbar color="light" fixed='top' light expand="md" id='navbar'>
+                <NavbarBrand href="/"><img src={Logo} id='logo' alt='logo' /></NavbarBrand>
+                <NavbarToggler onClick={toggle} />
+                <Collapse isOpen={isOpen} navbar >
+                    <Nav className='d-flex' id='navItemsContainer' navbar>
+                        <NavItem style={{ display: isLoggedIn ? 'none' : 'block' }}>
+                            <Link to='/login' className='nav-link'>Login</Link>
+                        </NavItem>
+                        <NavItem>
+                            <Link to='/shop' className='nav-link'>Shop</Link>
+                        </NavItem>
+                        <NavItem>
+                            <Link to='/register' className='nav-link'>Register</Link>
+                        </NavItem>
+                        <NavItem id='accountIcon' style={{ display: isLoggedIn ? 'block' : 'none' }}>
+                            <Link to='/account' className='nav-link'>&#128100;</Link>
+                        </NavItem>
+                        <NavItem id='bagIcon'>
+                            <Link to='/bag' className='nav-link'><img src={ShoppingBag} id='bag' alt='bagIcon' /></Link>
+                        </NavItem>
+                    </Nav>
+                </Collapse>
+            </Navbar>
+            {/* </Switch>
+            </React.Fragment> */}
             <div className='container-fluid p-3'>
-            <Switch>
-                
+                <Switch>
+
                     <Route exact path='/'>
                         <Home />
                     </Route>
                     <Route exact path='/login'>
-                        <Login userLoggedIn={user=>setIsLoggedIn(user)} />
+                        <Login userLoggedIn={user => setIsLoggedIn(user)} />
                     </Route>
                     <Route exact path='/shop'>
                         <Shop />
                     </Route>
                     <Route exact path='/account'>
-                        <Account />
+                        <Account userLoggedIn={user => setIsLoggedIn(user)} />
                     </Route>
                     <Route exact path='/register'>
                         <Register />
@@ -111,11 +106,11 @@ function App() {
                     <Route exact path='/review'>
                         <Review />
                     </Route>
-                
-            </Switch>
+
+                </Switch>
             </div>
         </Router>
-    ) 
+    )
 }
 
 export default App;

@@ -57,7 +57,7 @@ export default function Shop() {
     const renderTags = (item) => {
         return (
             item.map(i => (
-                <p className='badge badge-pill badge-primary m-1'>{i.tag}</p>
+                <p className='badge badge-pill badge-primary m-1' key={i.id}>{i.tag}</p>
             ))
 
         )
