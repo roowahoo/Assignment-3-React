@@ -66,7 +66,7 @@ export default function Bag() {
 
     const order = async () => {
         if (address === '' || contact === '') {
-            alert('Plesse enter all fields')
+            alert('Please enter all fields')
         } else {
             const order = await axios.post(config.baseUrl + '/api/order/' + isLoggedIn.id, {
                 'shopper_id': isLoggedIn.id,

@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
-export default function Login() {
+export default function Login({userLoggedIn}) {
     const [formData, setFormData] = useState({
         'email': '',
         'password': ''
@@ -22,9 +22,11 @@ export default function Login() {
             })
             console.log(response.data)
             console.log(response.status)
+            userLoggedIn(response.data);
             if (response.data !== 'Invalid Password' && response.data !== 'No user found') {
                 localStorage.setItem('accessToken', response.data.accessToken);
                 localStorage.setItem('refreshToken', response.data.refreshToken);
+                
                 history.push('/shop', {
                     'form': formData
                 })

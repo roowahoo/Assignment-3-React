@@ -146,7 +146,7 @@ export default function Shop() {
                 <div className='card-div'>
                     {products.map(p => (
 
-                        <div className="card">
+                        <div className="card" key={p.id}>
                             <img className="card-img-top" src={p.image_url} alt="product_image"></img>
                             <div className="card-body">
                                 <h4><b>{p.brand.brand}</b></h4>

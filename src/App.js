@@ -34,28 +34,40 @@ function App() {
 
     const [isOpen, setIsOpen] = useState(false);
     const toggle = () => setIsOpen(!isOpen);
+    const [isLoggedIn, setIsLoggedIn] = useState('')
 
 
     useEffect(() => {
+
+        // if (localStorage.getItem('accessToken') !== 'null') {
+        //     setIsLoggedIn('Logged In')
+
+        // }
+
         setInterval(async () => {
             const response = await axios.post(config.baseUrl + '/api/shoppers/refresh', {
                 refreshToken: localStorage.getItem('refreshToken')
             })
             localStorage.setItem('accessToken', response.data.accessToken)
         }, config.refresh_token_interval)
+
+
     })
 
-    return (
+
+
+
+    return  (
 
         <Router>
-            <div>
+            <React.Fragment>
                 <Switch>
-                    <Navbar color="light" fixed='top'  light expand="md" id='navbar'>
+                    <Navbar color="light" fixed='top' light expand="md" id='navbar'>
                         <NavbarBrand href="/"><img src={Logo} id='logo' alt='logo' /></NavbarBrand>
                         <NavbarToggler onClick={toggle} />
                         <Collapse isOpen={isOpen} navbar >
                             <Nav className='d-flex' id='navItemsContainer' navbar>
-                                <NavItem>
+                                <NavItem style={{display:isLoggedIn?'none':'block'}}>
                                     <Link to='/login' className='nav-link'>Login</Link>
                                 </NavItem>
                                 <NavItem>
@@ -68,20 +80,21 @@ function App() {
                                     <Link to='/account' className='nav-link'>&#128100;</Link>
                                 </NavItem>
                                 <NavItem id='bagIcon'>
-                                    <Link to='/bag' className='nav-link'><img src={ShoppingBag} id='bag' alt='bagIcon'/></Link>
+                                    <Link to='/bag' className='nav-link'><img src={ShoppingBag} id='bag' alt='bagIcon' /></Link>
                                 </NavItem>
                             </Nav>
                         </Collapse>
                     </Navbar>
                 </Switch>
-            </div>
+            </React.Fragment>
+            <div className='container-fluid p-3'>
             <Switch>
-                <div className='container-fluid p-3'>
+                
                     <Route exact path='/'>
-                    <Home/>
-                </Route>
+                        <Home />
+                    </Route>
                     <Route exact path='/login'>
-                        <Login />
+                        <Login userLoggedIn={user=>setIsLoggedIn(user)} />
                     </Route>
                     <Route exact path='/shop'>
                         <Shop />
@@ -98,10 +111,11 @@ function App() {
                     <Route exact path='/review'>
                         <Review />
                     </Route>
-                </div>
+                
             </Switch>
+            </div>
         </Router>
-    );
+    ) 
 }
 
 export default App;
