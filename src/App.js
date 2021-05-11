@@ -68,7 +68,7 @@ function App() {
                         <NavItem>
                             <Link to='/shop' className='nav-link'>Shop</Link>
                         </NavItem>
-                        <NavItem>
+                        <NavItem style={{ display: isLoggedIn ? 'none' : 'block' }}>
                             <Link to='/register' className='nav-link'>Register</Link>
                         </NavItem>
                         <NavItem id='accountIcon' style={{ display: isLoggedIn ? 'block' : 'none' }}>
@@ -86,7 +86,7 @@ function App() {
                 <Switch>
 
                     <Route exact path='/'>
-                        <Home />
+                        <Home userLoggedIn={user => setIsLoggedIn(user)} />
                     </Route>
                     <Route exact path='/login'>
                         <Login userLoggedIn={user => setIsLoggedIn(user)} />
