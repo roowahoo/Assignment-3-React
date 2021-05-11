@@ -42,12 +42,6 @@ body{
     margin-left:auto;
 }
 
-#accountIcon{
-    /* margin-left:auto; */
-    font-size: 30px;
-
-}
-
 .checkCursor{
     color:rgb(104, 212, 104);
     background-color: transparent;
@@ -68,11 +62,7 @@ body{
     justify-content:center
 }
 
-.card{
-    width:18rem;
-    margin:20px 20px
 
-}
 
 .item-row{
     border: 1px solid rgb(209, 206, 206);
@@ -110,11 +100,26 @@ body{
 
 
 @media (min-width:280px){
-    .form{
+.form{
     border-radius: 15px;
     padding:10px;
     background-color:rgba(255, 255, 255, 0.9);
     box-shadow:10px 10px 8px #a09c9c
+}
+
+.card{
+    margin:20px 0
+
+}
+
+}
+
+@media (min-width:768px){
+
+.card{
+    width:18rem;
+    margin:20px 10px
+
 }
 
 }
