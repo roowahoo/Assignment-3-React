@@ -1,6 +1,7 @@
 import config from '../config'
 import React, { useState } from 'react'
 import axios from 'axios'
+import { useHistory } from 'react-router-dom'
 
 export default function Register() {
 
@@ -17,6 +18,7 @@ export default function Register() {
         setFormData(clone)
 
     }
+    const history = useHistory()
 
     const register = async () => {
         const response = await axios.post(config.baseUrl+'/api/shoppers/register', {
@@ -26,6 +28,8 @@ export default function Register() {
             'address': formData.address
         })
         console.log(response.data)
+        alert('Registration Successful!')
+        history.push('/login')
 
     }
 
