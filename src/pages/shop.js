@@ -74,7 +74,8 @@ export default function Shop() {
         console.log(e.target.value)
         if (isLoggedIn.id) {
             const response = await axios.get(config.baseUrl + '/api/bag/' + isLoggedIn.id + '/' + e.target.value + '/add')
-            console.log(response.data)
+            // console.log(response.data)
+            alert('Added to bag!')
             addToBagAnimation()
         } else {
             alert('Please login')
