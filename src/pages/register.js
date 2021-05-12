@@ -2,6 +2,7 @@ import config from '../config'
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
+import { Alert } from 'reactstrap'
 
 export default function Register() {
 
@@ -21,15 +22,21 @@ export default function Register() {
     const history = useHistory()
 
     const register = async () => {
-        const response = await axios.post(config.baseUrl+'/api/shoppers/register', {
-            'username': formData.username,
-            'email': formData.email,
-            'password': formData.password,
-            'address': formData.address
-        })
-        console.log(response.data)
-        alert('Registration Successful!')
-        history.push('/login')
+        try {
+            const response = await axios.post(config.baseUrl + '/api/shoppers/register', {
+                'username': formData.username,
+                'email': formData.email,
+                'password': formData.password,
+                'address': formData.address
+            })
+            // console.log(response.data)
+            alert('Registration Successful!')
+            history.push('/login')
+
+        } catch (e) {
+            alert('Failed to register')
+        }
+
 
     }
 
